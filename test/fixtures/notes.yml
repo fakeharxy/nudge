@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  todo_by: 2018-01-29
+  last_seen: 2018-01-29
+
+two:
+  body: MyText
+  todo_by: 2018-01-29
+  last_seen: 2018-01-29

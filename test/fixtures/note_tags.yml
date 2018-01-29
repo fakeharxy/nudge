@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  note: one
+  tag: one
+  primary: false
+
+two:
+  note: two
+  tag: two
+  primary: false
