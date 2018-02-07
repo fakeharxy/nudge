@@ -24,7 +24,8 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(note_params)
+    @note = Note.new(body: note_params['body'], last_seen: Date.today)
+    @note.primary_tag = Tag.first_or_create(name: note_params['primary_tag'])
 
     respond_to do |format|
       if @note.save
@@ -69,6 +70,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:body, :todo_by, :primary) 
+      params.require(:note).permit(:body, :primary_tag) 
     end
 end

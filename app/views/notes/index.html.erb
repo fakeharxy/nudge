@@ -6,9 +6,7 @@
   <thead>
     <tr>
       <th>Body</th>
-      <th>Todo by</th>
-      <th>Last seen</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -16,9 +14,6 @@
     <% @notes.each do |note| %>
       <tr>
         <td><%= note.body %></td>
-        <td><%= note.todo_by %></td>
-        <td><%= note.last_seen %></td>
-        <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
