@@ -9,8 +9,7 @@ class NotesController < ApplicationController
 
   # GET /notes/1
   # GET /notes/1.json
-  def show
-  end
+  def show; end
 
   # GET /notes/new
   def new
@@ -18,14 +17,13 @@ class NotesController < ApplicationController
   end
 
   # GET /notes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /notes
   # POST /notes.json
   def create
     @note = Note.new(body: note_params['body'], last_seen: Date.today)
-    @note.primary_tag = Tag.first_or_create(name: note_params['primary_tag'])
+    @note.primary_tag = Tag.where(name: note_params['primary_tag']).first_or_create
 
     respond_to do |format|
       if @note.save
@@ -55,7 +53,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    @note.destroy
+    @note.destroy_with_tags
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
       format.json { head :no_content }
@@ -63,13 +61,15 @@ class NotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def note_params
-      params.require(:note).permit(:body, :primary_tag) 
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_note
+    @note = Note.find(params[:id])
+  end
+
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def note_params
+    params.require(:note).permit(:body, :primary_tag)
+  end
 end
