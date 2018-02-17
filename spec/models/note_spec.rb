@@ -13,6 +13,11 @@ RSpec.describe Note, type: :model do
     expect(subject).to be_valid
   end
 
+  it 'initialises with certain defaults' do
+    expect(@bob.last_seen).to eq(Date.today)
+    expect(@bob.seentoday).to eq(false)
+  end
+
   it 'accepts a primary tag' do
     @bob.add_primary_tag = "hello"
     expect(@bob.get_primary_tag_name).to eq("hello")
