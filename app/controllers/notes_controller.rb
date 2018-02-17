@@ -23,8 +23,7 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(body: note_params['body'], last_seen: Date.today)
-    @note.primary_tag = Tag.where(name: note_params['primary_tag']).first_or_create
-
+    @note.primary_tag = note_params['primary_tag']
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
