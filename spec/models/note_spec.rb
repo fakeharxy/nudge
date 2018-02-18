@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Note, type: :model do
   before(:each) do
-    @bob = Note.create! 
+    @bob = Note.create!
   end
 
   subject {
@@ -38,6 +38,42 @@ RSpec.describe Note, type: :model do
     @bob.add_secondary_tags = "hello"
     @bob.destroy_with_tags
     expect(Tag.all).to eq([])
+  end
+
+  it 'can determine order from importance' do
+    @bob.add_primary_tag = "hello"
+    @bob.primary_tag.importance = 7
+    @bob.set_last_seen = 2.days.ago
+    expect(@bob.urgency).to eq(21)
+  end
+
+  it 'will be the importance value if the date seen is today' do
+    @bob.add_primary_tag = "hello"
+    @bob.primary_tag.importance = 4
+    @bob.set_last_seen = Date.today
+    expect(@bob.urgency).to eq(4)
+  end
+
+  it 'will be able to provide the most urgent note' do
+    @bob.add_primary_tag = "hello"
+    @bob.primary_tag.importance = 7
+    @bob.set_last_seen = 2.days.ago
+    @mike = Note.create!
+    @mike.add_primary_tag = "donkey"
+    @mike.primary_tag.importance = 6
+    @mike.set_last_seen = 2.days.ago
+    expect(Note.get_most_urgent).to eq(@bob)
+  end
+
+  it 'will be able to find the most urgent note part 2' do
+    @bob.add_primary_tag = "hello"
+    @bob.primary_tag.importance = 3
+    @bob.set_last_seen = 2.days.ago
+    @trey = Note.create!
+    @trey.add_primary_tag = "donkey"
+    @trey.primary_tag.importance = 3
+    @trey.set_last_seen = 3.days.ago
+    expect(Note.get_most_urgent).to eq(@trey)
   end
 
   it 'does not delete a tag if connected to another note' do

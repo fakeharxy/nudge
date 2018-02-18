@@ -31,6 +31,10 @@ class Note < ApplicationRecord
     self.primary_tag.name
   end
 
+  def set_last_seen=(date)
+    self.last_seen = date
+  end
+
   def add_secondary_tags=(secondary_tags)
     self.tags = secondary_tags.split(",").map do |n|
       Tag.where(name: n.strip).first_or_create!
@@ -39,5 +43,17 @@ class Note < ApplicationRecord
 
   def get_all_tag_names
     Tag.all.map(&:name)
+  end
+
+  def urgency
+    self.primary_tag.importance * time_since_last_seen
+  end
+
+  def self.get_most_urgent
+    Note.all.sort_by(&:urgency).first
+  end
+
+  def time_since_last_seen
+    ((Date.today - self.last_seen) + 1).to_i
   end
 end
