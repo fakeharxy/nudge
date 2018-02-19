@@ -4,7 +4,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.get_most_urgent
+    @note = Note.get_most_urgent
   end
 
   # GET /notes/1
@@ -23,7 +23,8 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(body: note_params['body'], last_seen: Date.today)
-    @note.primary_tag = note_params['primary_tag']
+    @note.add_primary_tag = note_params['primary_tag']
+    @note.add_secondary_tags = note_params['secondary_tags']
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
@@ -69,6 +70,6 @@ class NotesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def note_params
-    params.require(:note).permit(:body, :primary_tag)
+    params.require(:note).permit(:body, :primary_tag, :secondary_tags)
   end
 end

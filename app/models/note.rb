@@ -5,6 +5,7 @@ class Note < ApplicationRecord
   has_one :primary_note_tag, -> { where primary: true }, class_name: 'NoteTag'
   has_one :primary_tag, through: :primary_note_tag, source: :tag
   after_initialize :init
+  attr_accessor :secondary_tags
 
   def init
     self.last_seen ||= Date.today
@@ -33,6 +34,7 @@ class Note < ApplicationRecord
 
   def set_last_seen=(date)
     self.last_seen = date
+    self.save
   end
 
   def add_secondary_tags=(secondary_tags)
@@ -50,7 +52,7 @@ class Note < ApplicationRecord
   end
 
   def self.get_most_urgent
-    Note.all.sort_by(&:urgency).first
+    Note.all.sort_by{|i| - i.urgency}.first
   end
 
   def time_since_last_seen

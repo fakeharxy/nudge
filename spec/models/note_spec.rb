@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Note, type: :model do
   before(:each) do
-    @bob = Note.create!
+    @bob = Note.create!(body: "bob")
   end
 
   subject {
@@ -58,7 +58,7 @@ RSpec.describe Note, type: :model do
     @bob.add_primary_tag = "hello"
     @bob.primary_tag.importance = 7
     @bob.set_last_seen = 2.days.ago
-    @mike = Note.create!
+    @mike = Note.create!(body: "Mike")
     @mike.add_primary_tag = "donkey"
     @mike.primary_tag.importance = 6
     @mike.set_last_seen = 2.days.ago
@@ -69,7 +69,7 @@ RSpec.describe Note, type: :model do
     @bob.add_primary_tag = "hello"
     @bob.primary_tag.importance = 3
     @bob.set_last_seen = 2.days.ago
-    @trey = Note.create!
+    @trey = Note.create!(body: "Trey")
     @trey.add_primary_tag = "donkey"
     @trey.primary_tag.importance = 3
     @trey.set_last_seen = 3.days.ago
