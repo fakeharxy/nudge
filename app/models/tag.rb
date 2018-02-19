@@ -5,4 +5,8 @@ class Tag < ApplicationRecord
   def set_importance=(importance)
     self.update(importance: importance)
   end
+
+  def get_all_notes
+    self.notes
+  end
 end
