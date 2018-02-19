@@ -23,6 +23,7 @@ class Note < ApplicationRecord
   def add_primary_tag=(tag)
     if Tag.exists?(name: tag)
       self.primary_tag = Tag.find_by(name: tag)
+      self.primary_tag.set_importance = 5 if self.primary_tag.importance == nil
     else
       self.primary_tag = Tag.create!(name: tag, importance: 5)
     end

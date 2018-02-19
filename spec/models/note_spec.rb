@@ -34,6 +34,13 @@ RSpec.describe Note, type: :model do
     expect(@bob.get_all_tag_names).to eq(["hello", "this", "tags", "mike"])
   end
 
+  it 'can overwrite the importance of a secondary tag when a primary is made' do
+    @bob.add_secondary_tags = "hello, this, tags"
+    @bob.add_primary_tag = "hello"
+    expect(@bob.primary_tag.importance).to eq(5)
+  end
+
+
   it 'deletes a tag when the note is deleted' do
     @bob.add_secondary_tags = "hello"
     @bob.destroy_with_tags
