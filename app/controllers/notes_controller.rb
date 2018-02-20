@@ -5,6 +5,7 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @note = Note.get_most_urgent
+    @tags = Tag.all
   end
 
   # GET /notes/1

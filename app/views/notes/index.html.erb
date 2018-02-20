@@ -1,26 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Notes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <% if @note %>
-        <td><%= @note.body %></td>
-        <td><%= link_to 'Edit', edit_note_path(@note) %></td>
-        <td><%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="sidebar">
+  <h5> Tagbar </h5>
+  <ul>
+    <% @tags.each do |t| %>
+      <li> <%= t.name %> </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
 
-<br>
+
+<div class="content">
+
+
+  <div>
+        <% if @note %>
+          <p><%= @note.body %></p>
+          <p><%= link_to 'Edit', edit_note_path(@note) %></p>
+          <p><%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
+  </div>
+  <br>
 
 <%= link_to 'New Note', new_note_path %>
+</div>
