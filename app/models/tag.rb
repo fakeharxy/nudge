@@ -6,6 +6,10 @@ class Tag < ApplicationRecord
     self.update(importance: importance)
   end
 
+  def note_count
+    self.notes.count
+  end
+
   def get_all_notes
     self.notes
   end
