@@ -22,10 +22,12 @@ class Note < ApplicationRecord
 
   def add_primary_tag=(tag)
     if Tag.exists?(name: tag)
-      self.primary_tag = Tag.find_by(name: tag)
+      self.update(primary_tag: Tag.find_by(name: tag))
       self.primary_tag.set_importance = 5 if self.primary_tag.importance == nil
+      self.save
     else
       self.primary_tag = Tag.create!(name: tag, importance: 5)
+      self.save
     end
   end
 
@@ -42,6 +44,7 @@ class Note < ApplicationRecord
     self.tags = secondary_tags.split(",").map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
+    self.save
   end
 
   def get_all_tag_names
