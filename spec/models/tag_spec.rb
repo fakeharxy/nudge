@@ -27,6 +27,7 @@ RSpec.describe Tag, type: :model do
     @mike.add_secondary_tags = "hello"
     @tim = Note.create!(body: "tim")
     @tim.add_primary_tag = "hello"
+    @tim.add_secondary_tags = "herro,my,friend"
     expect(Tag.find_by(name:"hello").note_count).to eq(3)
   end
 

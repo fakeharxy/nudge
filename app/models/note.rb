@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
   has_many :note_tags, dependent: :delete_all
-  has_many :tags, -> { distinct }, through: :note_tags
+  has_many :tags, through: :note_tags
 
   has_one :primary_note_tag, -> { where primary: true }, class_name: 'NoteTag'
   has_one :primary_tag, through: :primary_note_tag, source: :tag
@@ -41,7 +41,7 @@ class Note < ApplicationRecord
   end
 
   def add_secondary_tags=(secondary_tags)
-    self.tags = secondary_tags.split(",").map do |n|
+    self.tags << secondary_tags.split(",").map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
     self.save
