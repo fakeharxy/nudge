@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
 
   # GET /notes
   # GET /notes.json
@@ -36,6 +36,12 @@ class NotesController < ApplicationController
       end
     end
   end
+
+  def seen
+    @note.mark_as_seen
+    redirect_to notes_path
+  end
+
 
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json

@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
   has_many :note_tags, dependent: :delete_all
-  has_many :tags, through: :note_tags
+  has_many :tags, -> { distinct }, through: :note_tags
 
   has_one :primary_note_tag, -> { where primary: true }, class_name: 'NoteTag'
   has_one :primary_tag, through: :primary_note_tag, source: :tag
@@ -35,6 +35,10 @@ class Note < ApplicationRecord
     self.primary_tag.name
   end
 
+  def seen_today?
+    self.seentoday
+  end
+
   def set_last_seen=(date)
     self.last_seen = date
     self.save
@@ -56,7 +60,12 @@ class Note < ApplicationRecord
   end
 
   def self.get_most_urgent
-    Note.all.sort_by{|i| - i.urgency}.first
+    Note.where("seentoday = false").sort_by{|i| - i.urgency}.first
+  end
+
+  def mark_as_seen
+    self.set_last_seen = Date.today
+    self.update(seentoday: true)
   end
 
   def time_since_last_seen

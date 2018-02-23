@@ -1,0 +1,16 @@
+<% notes.each do |note| %>
+
+<p>
+  <strong>Body:</strong>
+  <%= note.body %>
+</p>
+<p>
+  <strong>Primary Tag:</strong>
+  <%= note.primary_tag.name %>
+</p>
+
+<p><%= link_to 'Edit', edit_note_path(note) %></p>
+<p><%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<p> ---------------------------------------- </p>
+
+<% end %>

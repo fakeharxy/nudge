@@ -19,6 +19,7 @@
           <p><%= @note.body %></p>
           <p><%= link_to 'Edit', edit_note_path(@note) %></p>
           <p><%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <p><%= link_to 'Seen it', noteseen_path(@note) %>
     <% end %>
   </div>
   <br>

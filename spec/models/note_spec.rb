@@ -40,7 +40,6 @@ RSpec.describe Note, type: :model do
     expect(@bob.primary_tag.importance).to eq(5)
   end
 
-
   it 'deletes a tag when the note is deleted' do
     @bob.add_secondary_tags = "hello"
     @bob.destroy_with_tags
@@ -91,6 +90,13 @@ RSpec.describe Note, type: :model do
     expect(Tag.all).to_not eq([])
     mike.destroy_with_tags
     expect(Tag.all).to eq([])
+  end
+
+  it "can mark a note as seen & update last_seen" do
+    @bob.set_last_seen = 3.days.ago
+    @bob.mark_as_seen
+    expect(@bob.last_seen).to eq(Date.today)
+    expect(@bob.seentoday).to eq(true)
   end
 
 end

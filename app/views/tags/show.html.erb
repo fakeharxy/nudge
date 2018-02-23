@@ -1,18 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<% @notes.each do |note| %>
-
-<p>
-  <strong>Body:</strong>
-  <%= note.body %>
-</p>
-<p>
-  <strong>Primary Tag:</strong>
-  <%= note.primary_tag.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_note_path(note) %> |
-
-<% end %>
+<%= render :partial => 'notes/shownote', locals: { notes: @notes} %>
 <%= link_to 'Back', notes_path %>
