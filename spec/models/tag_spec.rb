@@ -39,4 +39,14 @@ RSpec.describe Tag, type: :model do
     expect(@bobtag.get_all_notes).to eq([@bob,@trey,@mike])
   end
 
+  it 'can get multiple notes in order' do
+    @trey = Note.create!
+    @trey.add_primary_tag = "hello"
+    @treytag = Tag.find_by(name:"hello")
+    @mike = Note.create!
+    @mike.add_secondary_tags = "monkey"
+    @miketag = Tag.find_by(name:"monkey")
+    expect(Tag.in_order_of_most_used).to eq ([@treytag, @miketag])
+  end
+
 end

@@ -10,6 +10,10 @@ class Tag < ApplicationRecord
     self.notes.count
   end
 
+  def self.in_order_of_most_used
+    Tag.all.sort_by{|i| - i.note_count}
+  end
+
   def get_all_notes
     self.notes
   end
