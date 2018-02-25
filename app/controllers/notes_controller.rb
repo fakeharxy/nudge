@@ -4,8 +4,9 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @note = Note.get_most_urgent
-    @tags = Tag.all
+    run_clean_up if current_user.last_sign_in_at.to_date != Date.today
+    @note = current_user.notes.get_most_urgent
+    @tags = current_user.tags_in_order_of_most_used
   end
 
   # GET /notes/1
@@ -23,9 +24,9 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(body: note_params['body'], last_seen: Date.today)
-    @note.add_primary_tag = note_params['primary_tag']
-    @note.add_secondary_tags = note_params['secondary_tags']
+    @note = Note.new(body: note_params['body'], last_seen: Date.today, user_id: current_user.id)
+    @note.add_primary_tag(note_params['primary_tag'], current_user.id)
+    @note.add_secondary_tags(note_params['secondary_tags'], current_user.id)
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
@@ -78,6 +79,9 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
+  def run_clean_up
+    Note.reset_seen_status(current_user.id)
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def note_params

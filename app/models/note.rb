@@ -22,13 +22,13 @@ class Note < ApplicationRecord
     end
   end
 
-  def add_primary_tag=(tag)
+  def add_primary_tag(tag, user_id)
     if Tag.exists?(name: tag)
       self.update(primary_tag: Tag.find_by(name: tag))
       self.primary_tag.set_importance = 5 if self.primary_tag.importance == nil
       self.save
     else
-      self.primary_tag = Tag.create!(name: tag, importance: 5)
+      self.primary_tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
       self.save
     end
   end
@@ -46,9 +46,9 @@ class Note < ApplicationRecord
     self.save
   end
 
-  def add_secondary_tags=(secondary_tags)
+  def add_secondary_tags(secondary_tags, user_id)
     self.tags << secondary_tags.split(",").map do |n|
-      Tag.where(name: n.strip).first_or_create!
+      Tag.where(name: n.strip, user_id: user_id).first_or_create!
     end
     self.save
   end
@@ -70,8 +70,8 @@ class Note < ApplicationRecord
     self.update(seentoday: true)
   end
 
-  def self.reset_seen_status
-    Note.update_all(seentoday: false)
+  def self.reset_seen_status(user_id)
+    Note.where('user_id = ?', user_id).update_all(seentoday: false)
   end
 
   def time_since_last_seen

@@ -4,10 +4,11 @@
 <div class="sidebar">
   <h5> Tagbar </h5>
   <ul>
-    <% @tags.in_order_of_most_used.each do |t| %>
+    <% @tags.each do |t| %>
       <li><%= link_to t.name, tag_path(t) %> </li>
     <% end %>
-  </ul>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
 </div>
 
 
