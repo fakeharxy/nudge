@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /notes
   # GET /notes.json
   def index
@@ -42,6 +42,10 @@ class NotesController < ApplicationController
     redirect_to notes_path
   end
 
+  def reset
+    Note.reset_seen_status
+    redirect_to notes_path
+  end
 
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json

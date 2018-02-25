@@ -4,6 +4,8 @@ class Note < ApplicationRecord
 
   has_one :primary_note_tag, -> { where primary: true }, class_name: 'NoteTag'
   has_one :primary_tag, through: :primary_note_tag, source: :tag
+
+  belongs_to :user
   after_initialize :init
   attr_accessor :secondary_tags
 
@@ -66,6 +68,10 @@ class Note < ApplicationRecord
   def mark_as_seen
     self.set_last_seen = Date.today
     self.update(seentoday: true)
+  end
+
+  def self.reset_seen_status
+    Note.update_all(seentoday: false)
   end
 
   def time_since_last_seen

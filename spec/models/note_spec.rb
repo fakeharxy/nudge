@@ -99,4 +99,13 @@ RSpec.describe Note, type: :model do
     expect(@bob.seentoday).to eq(true)
   end
 
+  it 'can reset seen_today' do
+    @bob.mark_as_seen
+    @trey = Note.create!(body: "Trey")
+    @trey.mark_as_seen
+    Note.reset_seen_status
+    expect(@bob.reload.seentoday).to eq(false)
+    expect(@trey.reload.seentoday).to eq(false)
+  end
+
 end
