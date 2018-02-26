@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
   get "noteseen/:id", to: "notes#seen", as: "noteseen"
   get "reset", to: "notes#reset", as: "reset"
+  get "changeimportance", to: "tags#changeimportance", as: "changeimportance"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -29,7 +29,7 @@ class NotesController < ApplicationController
     @note.add_secondary_tags(note_params['secondary_tags'], current_user.id)
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
       else
         format.html { render :new }

@@ -27,6 +27,12 @@ RSpec.describe Tag, type: :model do
     expect(@bobtag.get_all_notes).to eq([@bob])
   end
 
+  it 'can get all primary notes' do
+    @mike = Note.create!(body: "mike", user_id: @user.id)
+    @mike.add_secondary_tags("snacks", @user.id)
+    expect(Tag.get_all_primary_tags(@user.id)).to eq([@bobtag])
+  end
+
   it 'can return number of notes' do
     @mike = Note.create!(body: "mike", user_id: @user.id)
     @mike.add_secondary_tags("hello", @user.id)

@@ -16,6 +16,10 @@ class Tag < ApplicationRecord
     Tag.where(user_id: user_id).sort_by{|i| - i.note_count}
   end
 
+  def self.get_all_primary_tags(user_id)
+    Tag.where(user_id: user_id).where.not('importance' => nil)
+  end
+
   def get_all_notes
     self.notes.uniq
   end

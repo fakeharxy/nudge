@@ -2,13 +2,15 @@
 
 
 <div class="sidebar">
-  <h5> Tagbar </h5>
+  <h5><%= link_to 'Tagbar', tags_path %> </h5>
   <ul>
     <% @tags.each do |t| %>
       <li><%= link_to t.name, tag_path(t) %> </li>
     <% end %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+    <li class="logout">
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    </li>
+  </ul>
 </div>
 
 
@@ -16,17 +18,17 @@
 
 
   <div>
-        <% if @note %>
-          <p><%= @note.body %></p>
-          <p><%= link_to 'Edit', edit_note_path(@note) %></p>
-          <p><%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-          <p><%= link_to 'Seen it', noteseen_path(@note) %>
-      <% else %>
-        You've seen all your notes today.
-        <%= link_to 'Reset', reset_path() %>
-    <% end %>
+    <% if @note %>
+      <p><%= @note.body %></p>
+      <p><%= link_to 'Edit', edit_note_path(@note) %></p>
+      <p><%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <p><%= link_to 'Seen it', noteseen_path(@note) %>
+  <% else %>
+    You've seen all your notes today.
+    <%= link_to 'Reset', reset_path() %>
+  <% end %>
   </div>
   <br>
 
-<%= link_to 'New Note', new_note_path %>
+  <%= link_to 'New Note', new_note_path %>
 </div>
