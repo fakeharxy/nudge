@@ -96,6 +96,25 @@ RSpec.describe Note, type: :model do
     expect(@bob.seentoday).to eq(true)
   end
 
+  it "can tell if every note is seen" do
+    @bob.mark_as_seen
+    mike = Note.create!(body: "mike", user_id: @user.id)
+    mike.mark_as_seen
+    expect(Note.all_seen?(@user.id)).to eq(true)
+  end
+
+  it "can tell if every note is not seen" do
+    @bob.mark_as_seen
+    mike = Note.create!(body: "mike", user_id: @user.id)
+    mike.mark_as_seen
+    expect(Note.all_seen?(@user.id)).to eq(true)
+  end
+
+  it "can get the most recent note" do
+    mike = Note.create!(body: "mike", user_id: @user.id, last_seen: 2.days.ago)
+    expect(Note.most_recent(@user.id)).to eq(@bob)
+  end
+
   it 'can reset seen_today' do
     @bob.mark_as_seen
     @trey = Note.create!(body: "Trey", user_id: @user.id)

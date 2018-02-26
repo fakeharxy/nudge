@@ -70,6 +70,15 @@ class Note < ApplicationRecord
     self.update(seentoday: true)
   end
 
+  def self.all_seen?(user_id)
+    !Note.exists?(user_id: user_id, seentoday: false)
+  end
+
+  def self.most_recent(user_id)
+    Note.where('user_id = ?', user_id).order('last_seen DESC').first
+  end
+
+
   def self.reset_seen_status(user_id)
     Note.where('user_id = ?', user_id).update_all(seentoday: false)
   end

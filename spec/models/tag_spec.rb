@@ -51,7 +51,7 @@ RSpec.describe Tag, type: :model do
     @mike = Note.create!(body: "mike", user_id: @user.id)
     @mike.add_secondary_tags("monkey", @user.id)
     @miketag = Tag.find_by(name:"monkey")
-    expect(Tag.in_order_of_most_used).to eq ([@treytag, @miketag])
+    expect(Tag.in_order_of_most_used(@user.id)).to eq ([@treytag, @miketag])
   end
 
 end

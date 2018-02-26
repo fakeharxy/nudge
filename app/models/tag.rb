@@ -9,14 +9,14 @@ class Tag < ApplicationRecord
   end
 
   def note_count
-    self.notes.count
+    self.notes.uniq.count
   end
 
-  def self.in_order_of_most_used
-    Tag.all.sort_by{|i| - i.note_count}
+  def self.in_order_of_most_used(user_id)
+    Tag.where(user_id: user_id).sort_by{|i| - i.note_count}
   end
 
   def get_all_notes
-    self.notes
+    self.notes.uniq
   end
 end

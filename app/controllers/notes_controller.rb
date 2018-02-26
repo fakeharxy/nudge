@@ -4,7 +4,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    run_clean_up if current_user.current_sign_in_at.to_date != current_user.last_sign_in_at.to_date
+    run_clean_up if clean_up_required?
     @note = current_user.notes.get_most_urgent
     @tags = current_user.tags_in_order_of_most_used
   end
@@ -79,9 +79,13 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
+  def clean_up_required?
+    current_user.last_cleanup != Date.today
+  end
+
   def run_clean_up
     Note.reset_seen_status(current_user.id)
-    current_user.update(last_sign_in_at: DateTime.now)
+    current_user.update(last_cleanup: Date.today)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
