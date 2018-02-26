@@ -5,7 +5,7 @@ class Note < ApplicationRecord
   has_one :primary_note_tag, -> { where primary: true }, class_name: 'NoteTag'
   has_one :primary_tag, through: :primary_note_tag, source: :tag
 
-  belongs_to :user
+  belongs_to :user, optional: true
   after_initialize :init
   attr_accessor :secondary_tags
 

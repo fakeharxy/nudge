@@ -1,4 +1,6 @@
+
 <p id="notice"><%= notice %></p>
+
 
 <div class="sidebar">
   <h5> Tagbar </h5>
@@ -6,14 +8,21 @@
     <% @tags.each do |t| %>
       <li><%= link_to t.name, tag_path(t) %> </li>
     <% end %>
-    <li>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
 </div>
+
 
 <div class="content">
-  <div>
-    <%= render :partial => 'notes/shownote', locals: { notes: @notes} %>
-  </div>
-<%= link_to 'Back', notes_path %>
-</div>
 
+
+  <div>
+    <% @tags.each do |t| %>
+      <li><%= t.name %></li>
+    <% end %>
+
+  </div>
+  <br>
+
+<%= link_to 'New Note', new_note_path %>
+</div>

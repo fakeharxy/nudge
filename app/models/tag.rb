@@ -2,7 +2,7 @@ class Tag < ApplicationRecord
   has_many :note_tags
   has_many :notes, through: :note_tags
 
-  belongs_to :user
+  belongs_to :user, optional: true
 
   def set_importance=(importance)
     self.update(importance: importance)

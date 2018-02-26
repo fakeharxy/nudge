@@ -6,7 +6,8 @@ class TagsController < ApplicationController
   end
 
   def show
-   @notes =  @tag.get_all_notes
+    @notes = @tag.get_all_notes
+    @tags = current_user.tags_in_order_of_most_used
   end
 
   private
