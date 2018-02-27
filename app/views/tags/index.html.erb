@@ -2,33 +2,17 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="sidebar">
-  <h5><%= link_to 'Tagbar', tags_path %> </h5>
-  <ul>
-    <% @tags.each do |t| %>
-      <li><%= link_to t.name, tag_path(t) %> </li>
-    <% end %>
-  <li class="logout">
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  <%= link_to('Back to Notes', notes_path) %>
-  </li>
-  </ul>
-</div>
-
-
-<div class="content">
-
-
-  <div>
-    <% @taglist.each do |t| %>
-      <li><%= t.name %></li>
-      <% (1..10).each do |n| %>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<div>
+  <% @taglist.each do |t| %>
+    <li><%= t.name %></li>
+    <% (1..10).each do |n| %>
       <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n) %>
-      <% end %>
     <% end %>
+  <% end %>
 
-  </div>
-  <br>
+</div>
+<br>
 
 <%= link_to 'New Note', new_note_path %>
-</div>
+</main>

@@ -1,12 +1,12 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
+  before_action :set_tags, only: [:new, :index, :show, :edit, :update]
   before_action :authenticate_user!
   # GET /notes
   # GET /notes.json
   def index
     run_clean_up if clean_up_required?
     @note = current_user.notes.get_most_urgent
-    @tags = current_user.tags_in_order_of_most_used
   end
 
   # GET /notes/1
@@ -77,6 +77,10 @@ class NotesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_note
     @note = Note.find(params[:id])
+  end
+
+  def set_tags
+    @tags = current_user.tags_in_order_of_most_used
   end
 
   def clean_up_required?
