@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<% flash.each do %>
+<div id="notice" role="alert" class="alert alert-success"><%= notice %></div>
+<% end %>
   <div>
     <%= render :partial => 'notes/shownote', locals: { notes: @notes} %>
   </div>

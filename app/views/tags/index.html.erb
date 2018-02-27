@@ -6,13 +6,13 @@
 
 <div class="col-sm-7">
   <% @taglist.each do |t| %>
-    <p><%= t.name %></p>
+    <p class="importance-style"><%= t.name %></p>
     <div class="btn-group mr-2" role="group" aria-label="First group">
       <% (1..10).each do |n| %>
         <% if n == t.importance %>
           <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn btn-primary active" %>
         <% else %>
-          <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn btn-secondary" %>
+          <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn btn-light" %>
         <% end %>
       <% end %>
     </div>
