@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+.sidebar-sticky {
+  position: sticky;
+  top: 48px; /* Height of navbar */
+  height: 90%;
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; 
+}
+
+.sticky-top {
+  @supports (position: sticky) {
+    position: sticky;
+    top: 0;
+    z-index: $zindex-sticky;
+  }
+}

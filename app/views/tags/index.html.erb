@@ -3,16 +3,22 @@
 
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-<div>
-  <% @taglist.each do |t| %>
-    <li><%= t.name %></li>
-    <% (1..10).each do |n| %>
-      <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n) %>
-    <% end %>
-  <% end %>
 
+<div class="col-sm-7">
+  <% @taglist.each do |t| %>
+    <p><%= t.name %></p>
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      <% (1..10).each do |n| %>
+        <% if n == t.importance %>
+          <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn btn-primary active" %>
+        <% else %>
+          <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn btn-secondary" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+
 <br>
 
-<%= link_to 'New Note', new_note_path %>
 </main>

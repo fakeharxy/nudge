@@ -11,45 +11,47 @@
 
   <body>
     <% if user_signed_in? %>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Noteback</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="/">Noteback</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Read <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/tags">Organise</a>
-          </li>
-          <li class="nav-item">
-            <span class="nav-link"><%= link_to 'New Note', new_note_path %></span>
-          </li>
-        </ul>
-          <span class="nav-link">
-            <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-          </span>
-      </div>
-    </nav>
-    <div class="container-fluid">
-      <div class="col-md-2 d-none d-md-block bg-light sidebar">
-        <h5><%= link_to 'Tagbar', tags_path %> </h5>
-        <ul>
-          <% @tags.each do |t| %>
-            <li><%= link_to t.name, tag_path(t) %> </li>
-          <% end %>
-        </ul>
-      </div>
-    <% else %>
-    <div class="container-fluid">
-    <% end %>
-      <%= yield %>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Read <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tags">Organise</a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'New Note', new_note_path, :class => 'nav-link' %>
+            </li>
+          </ul>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'nav-link') %>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <h5>Tagbar</h5>
+            <ul class="nav flex-column">
+              <% @tags.each do |t| %>
+                <li class="nav-item">
+                  <%= link_to t.name, tag_path(t), :class => 'nav-link' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <div class="container-fluid">
+        <% end %>
+        <%= yield %>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

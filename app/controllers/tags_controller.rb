@@ -3,7 +3,7 @@ class TagsController < ApplicationController
 
   def index
     @tags = Tag.in_order_of_most_used(current_user.id)
-    @taglist = Tag.get_all_primary_tags(current_user.id)
+    @taglist = Tag.get_all_primary_tags(current_user.id).sort_by{|t| - t.importance}
   end
 
   def show

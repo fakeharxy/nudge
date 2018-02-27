@@ -6,11 +6,22 @@
 
 <div>
   <% if @note %>
-    <p><%= @note.body %></p>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <%= link_to 'Edit', edit_note_path(@note), :class => 'btn btn-secondary' %>
-      <%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-secondary' %>
-      <%= link_to 'Seen it', noteseen_path(@note), :class => 'btn btn-secondary' %>
+    <div class="card" style="width: 80%;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">#<%= @note.get_primary_tag_name %></h6>
+        <p class="card-text"><%= @note.body %></p>
+        <br>
+        <% @note.tags.each_with_index do |t, i| %>
+          <% if i != 0 %>
+            <a href="tags/<%= t.id %>" class="card-link">#<%= t.name %></a>
+          <% end %>
+        <% end %>
+        <div class="btn-group float-right" role="group" aria-label="Basic example">
+          <%= link_to 'Delete', @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+          <%= link_to 'Edit', edit_note_path(@note), :class => 'btn btn-sm btn-success' %>
+          <%= link_to 'Seen it', noteseen_path(@note), :class => 'btn btn-sm btn-primary' %>
+        </div>
+      </div>
     </div>
   <% else %>
     You've seen all your notes today.
