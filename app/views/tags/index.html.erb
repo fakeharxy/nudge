@@ -8,7 +8,7 @@
   <% @taglist.each do |t| %>
     <p class="importance-style"><%= t.name %></p>
     <div class="btn-group mr-2" role="group" aria-label="First group">
-      <% (1..10).each do |n| %>
+      <% (1..5).each do |n| %>
         <% if n == t.importance %>
           <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn btn-primary active" %>
         <% else %>

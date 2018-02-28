@@ -123,5 +123,4 @@ RSpec.describe Note, type: :model do
     expect(@bob.reload.seentoday).to eq(false)
     expect(@trey.reload.seentoday).to eq(false)
   end
-
 end

@@ -15,17 +15,12 @@
  */
 
 .sidebar-sticky {
-  position: sticky;
+  position: static;
   top: 48px; /* Height of navbar */
   height: 90%;
   padding-top: .5rem;
   overflow-x: hidden;
-  overflow-y: auto; 
+  overflow-y: auto;
+  width: 250px;
 }
 
-.sticky-top {
-  @supports (position: sticky) {
-    position: sticky;
-    top: 0;
-  }
-}

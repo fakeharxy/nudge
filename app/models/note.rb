@@ -25,10 +25,10 @@ class Note < ApplicationRecord
   def add_primary_tag(tag, user_id)
     if Tag.exists?(name: tag)
       self.update(primary_tag: Tag.find_by(name: tag))
-      self.primary_tag.set_importance = 5 if self.primary_tag.importance == nil
+      self.primary_tag.set_importance = 3 if self.primary_tag.importance == nil
       self.save
     else
-      self.primary_tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
+      self.primary_tag = Tag.create!(name: tag, importance: 3, user_id: user_id)
       self.save
     end
   end
