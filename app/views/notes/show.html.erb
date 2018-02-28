@@ -1,16 +1,18 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @note.body %>
-</p>
-<p>
-  <strong>Primary Tag:</strong>
-  <%= @note.primary_tag %>
-</p>
 
+<div class="card" style="width: 95%;">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">#<%= @note.get_primary_tag_name %></h6>
+    <p class="card-text"><%= raw @note.body %></p>
+    <% @note.tags.each_with_index do |t, i| %>
+      <% if i != 0 %>
+        <a href="tags/<%= t.id %>" class="card-link">#<%= t.name %></a>
+      <% end %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+      <%= link_to 'Edit', edit_note_path(@note) %> |
+      <%= link_to 'Back', notes_path %>
 </main>

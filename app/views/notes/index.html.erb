@@ -14,10 +14,10 @@
             <a href="tags/<%= t.id %>" class="card-link">#<%= t.name %></a>
           <% end %>
         <% end %>
-        <div class="btn-group float-right" role="group" aria-label="Basic example">
-          <%= link_to 'Delete', @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
-          <%= link_to 'Edit', edit_note_path(@note), :class => 'btn btn-sm btn-success' %>
-          <%= link_to 'Seen it', noteseen_path(@note), :class => 'btn btn-sm btn-primary' %>
+        <div class="btn-group-vertical float-right" role="group" aria-label="Basic example">
+          <%= link_to (octicon 'trashcan', :height => 20), @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+          <%= link_to (octicon 'pencil', :height => 20), edit_note_path(@note), :class => 'btn btn-sm btn-success' %>
+          <%= link_to (octicon 'eye', :height => 20), noteseen_path(@note), :class => 'btn btn-sm btn-primary' %>
         </div>
       </div>
     </div>

@@ -32,14 +32,14 @@
           <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'nav-link') %>
         </div>
       </nav>
-      <div class="container-fluid">
+      <div class="container">
         <div class="col-md-3 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <h5>Tagbar</h5>
             <ul class="nav flex-column">
               <% @tags.each do |t| %>
                 <li class="nav-item">
-                  <%= link_to t.name, tag_path(t), :class => 'nav-link' %>
+                  <%= link_to t.name, tag_path(t), :class => 'tag-item nav-link' %>
                 </li>
               <% end %>
             </ul>

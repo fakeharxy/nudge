@@ -1,10 +1,23 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
 <% flash.each do %>
-<div id="notice" role="alert" class="alert alert-success"><%= notice %></div>
+  <div id="notice" role="alert" class="alert alert-success"><%= notice %></div>
 <% end %>
-  <div>
-    <%= render :partial => 'notes/shownote', locals: { notes: @notes} %>
+
+<% @notes.each do |note| %>
+  <div class="card" style="width: 95%;">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">#<%= note.get_primary_tag_name %></h6>
+      <p class="card-text"><%= raw note.body %></p>
+      <% note.tags.each_with_index do |t, i| %>
+        <% if i != 0 %>
+          <a href="tags/<%= t.id %>" class="card-link">#<%= t.name %></a>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+  <br>
+<% end %>
+
 <%= link_to 'Back', notes_path %>
 
 </main>
