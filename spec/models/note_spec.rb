@@ -34,7 +34,7 @@ RSpec.describe Note, type: :model do
   it 'can overwrite the importance of a secondary tag when a primary is made' do
     @bob.add_secondary_tags("hello, this, tags", @user.id)
     @bob.add_primary_tag("hello", @user.id)
-    expect(@bob.primary_tag.importance).to eq(5)
+    expect(@bob.primary_tag.importance).to eq(3)
   end
 
   it 'deletes a tag when the note is deleted' do
