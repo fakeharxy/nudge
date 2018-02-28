@@ -15,9 +15,9 @@
           <% end %>
         <% end %>
         <div class="btn-group-vertical float-right" role="group" aria-label="Basic example">
-          <%= link_to (octicon 'trashcan', :height => 20), @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
-          <%= link_to (octicon 'pencil', :height => 20), edit_note_path(@note), :class => 'btn btn-sm btn-success' %>
           <%= link_to (octicon 'eye', :height => 20), noteseen_path(@note), :class => 'btn btn-sm btn-primary' %>
+          <%= link_to (octicon 'pencil', :height => 20), edit_note_path(@note), :class => 'btn btn-sm btn-success' %>
+          <%= link_to (octicon 'trashcan', :height => 20), @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </div>
       </div>
     </div>

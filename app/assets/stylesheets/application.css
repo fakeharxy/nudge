@@ -22,16 +22,23 @@
   overflow-x: hidden;
   overflow-y: auto;
   width: 250px;
+  background-color: white;
 }
 
 .btn-sm {
   font-size: 0px !important;
+  padding: .25rem .25rem !important;
 }
 
 .btn-group-vertical {
   position: absolute !important;
-  top: 20px;
-  right: -55px;
+  top: 5px;
+  right: 5px;
+}
+
+.nav-item {
+  text-align: right;
+  margin-right: 10px;
 }
 
 .tag-item {
