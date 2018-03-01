@@ -34,7 +34,7 @@ RSpec.describe Note, type: :model do
   it 'can overwrite the importance of a secondary tag when a primary is made' do
     @bob.add_secondary_tags("hello, this, tags", @user.id)
     @bob.add_primary_tag("hello", @user.id)
-    expect(@bob.primary_tag.importance).to eq(3)
+    expect(@bob.primary_tag.importance).to eq(5)
   end
 
   it 'deletes a tag when the note is deleted' do
@@ -47,14 +47,35 @@ RSpec.describe Note, type: :model do
     @bob.add_primary_tag("mike", @user.id)
     @bob.primary_tag.importance = 7
     @bob.set_last_seen = 2.days.ago
-    expect(@bob.urgency).to eq(21)
+    expect(@bob.urgency).to eq(42)
+  end
+
+  it 'can return the urgency, red' do
+    @bob.add_primary_tag("mike", @user.id)
+    @bob.primary_tag.importance = 7
+    @bob.set_last_seen = 2.days.ago
+    expect(@bob.urgency_level).to eq('high')
+  end
+
+  it 'can return the urgency, amber' do
+    @bob.add_primary_tag("mike", @user.id)
+    @bob.primary_tag.importance = 4
+    @bob.set_last_seen = 2.days.ago
+    expect(@bob.urgency_level).to eq('medium')
+  end
+
+  it 'can return the urgency, green' do
+    @bob.add_primary_tag("mike", @user.id)
+    @bob.primary_tag.importance = 2
+    @bob.set_last_seen = 2.days.ago
+    expect(@bob.urgency_level).to eq('low')
   end
 
   it 'will be the importance value if the date seen is today' do
     @bob.add_primary_tag("mike", @user.id)
-    @bob.primary_tag.importance = 4
+    @bob.primary_tag.importance = 3
     @bob.set_last_seen = Date.today
-    expect(@bob.urgency).to eq(4)
+    expect(@bob.urgency).to eq(3)
   end
 
   it 'will be able to provide the most urgent note' do

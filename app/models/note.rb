@@ -25,10 +25,10 @@ class Note < ApplicationRecord
   def add_primary_tag(tag, user_id)
     if Tag.exists?(name: tag)
       self.update(primary_tag: Tag.find_by(name: tag))
-      self.primary_tag.set_importance = 3 if self.primary_tag.importance == nil
+      self.primary_tag.set_importance = 5 if self.primary_tag.importance == nil
       self.save
     else
-      self.primary_tag = Tag.create!(name: tag, importance: 3, user_id: user_id)
+      self.primary_tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
       self.save
     end
   end
@@ -58,7 +58,22 @@ class Note < ApplicationRecord
   end
 
   def urgency
-    self.primary_tag.importance * time_since_last_seen
+    if(time_since_last_seen <= 2)
+      self.primary_tag.importance * time_since_last_seen
+    else
+      self.primary_tag.importance * (time_since_last_seen * (time_since_last_seen - 1))
+    end
+  end
+
+  def urgency_level
+    case
+    when self.urgency >= 40
+      return "high"
+    when self.urgency >= 15
+      return "medium"
+    else
+      return "low"
+    end
   end
 
   def self.get_most_urgent
@@ -77,7 +92,6 @@ class Note < ApplicationRecord
   def self.most_recent(user_id)
     Note.where('user_id = ?', user_id).order('last_seen DESC').first
   end
-
 
   def self.reset_seen_status(user_id)
     Note.where('user_id = ?', user_id).update_all(seentoday: false)

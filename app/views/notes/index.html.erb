@@ -1,6 +1,6 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
+<main role="main" class="col-md-8 ml-sm-auto col-lg-9 pt-3 px-4">
 <% flash.each do %>
-<p id="notice" role="alert" class="alert alert-success"><%= notice %></p>
+  <p id="notice" role="alert" class="alert alert-success"><%= notice %></p>
 <% end %>
 
 <div>
@@ -8,17 +8,24 @@
     <div class="card" style="width: 95%;">
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted">#<%= @note.get_primary_tag_name %></h6>
-        <p class="card-text"><%= raw @note.body %></p>
+        <%= simple_format(@note.body, class: "card-text") %>
         <% @note.tags.each_with_index do |t, i| %>
           <% if i != 0 %>
             <a href="tags/<%= t.id %>" class="card-link">#<%= t.name %></a>
           <% end %>
         <% end %>
-        <div class="btn-group-vertical float-right" role="group" aria-label="Basic example">
+        <div class="btn-group-vertical float-right" role="group">
           <%= link_to (octicon 'eye', :height => 20), noteseen_path(@note), :class => 'btn btn-sm btn-primary' %>
           <%= link_to (octicon 'pencil', :height => 20), edit_note_path(@note), :class => 'btn btn-sm btn-success' %>
           <%= link_to (octicon 'trashcan', :height => 20), @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </div>
+        <% if @note.urgency_level == "high" %>
+        <span class="urgency-style badge badge-danger float-right"></span>
+      <% elsif @note.urgency_level == "medium" %>
+        <span class="urgency-style badge badge-info float-right"></span>
+      <% else %>
+        <span class="urgency-style badge badge-success "></span>
+      <% end %>
       </div>
     </div>
   <% else %>

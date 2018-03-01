@@ -16,12 +16,11 @@
 
 .sidebar-sticky {
   position: static;
-  top: 48px; /* Height of navbar */
   height: 90%;
-  padding-top: .5rem;
+  margin-top: -5px;
   overflow-x: hidden;
   overflow-y: auto;
-  width: 250px;
+  width: 230px;
   background-color: white;
 }
 

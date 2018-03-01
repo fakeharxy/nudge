@@ -12,8 +12,8 @@ RSpec.describe Tag, type: :model do
     @bobtag = Tag.find_by(name: "hello")
   end
 
-  it 'has default importance of 3' do
-    expect(@bob.primary_tag.importance).to eq(3)
+  it 'has default importance of 5' do
+    expect(@bob.primary_tag.importance).to eq(5)
   end
 
   it 'does not overwrite existing importance' do

@@ -15,6 +15,10 @@
   margin-right: 40px;
 }
 
+.card-body {
+  padding-bottom: 10px !important;
+}
+
 .sidebar {
   background: white;
   color: #000;
@@ -27,6 +31,14 @@
 
 .card {
   box-shadow: 3px 3px lightgrey;
+}
+
+.urgency-style {
+  display: block !important;
+  height: 1px !important;
+  width: 96%;
+  margin-top: 7px;
+  margin-right: -5px;
 }
 
 .sidebar {
