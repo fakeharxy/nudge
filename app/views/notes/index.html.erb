@@ -1,11 +1,11 @@
-<main role="main" class="col-md-12 ml-sm-auto col-lg-9 pt-3 px-4">
+<main role="main" class="col-sm-10 col-md-12 ml-sm-auto col-lg-9 pt-3 px-4">
 <% flash.each do %>
   <p id="notice" role="alert" class="alert alert-success"><%= notice %></p>
 <% end %>
 
 <div>
   <% if @note %>
-    <div class="card" style="width: 95%;">
+    <div class="card" style="width: 100%;">
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted">#<%= @note.get_primary_tag_name %></h6>
         <%= simple_format(@note.body, class: "card-text") %>
