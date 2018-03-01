@@ -14,19 +14,39 @@
  *= require_self
  */
 
+html, main, body, .sidebar, .sidebar-sticky  {
+  background-color: #f2faff !important;
+}
+
+.sidebar {
+  right:40px;
+}
+
 .sidebar-sticky {
   position: static;
   height: 90%;
   margin-top: -5px;
   overflow-x: hidden;
   overflow-y: auto;
-  width: 230px;
   background-color: white;
 }
 
 .btn-sm {
   font-size: 0px !important;
   padding: .25rem .25rem !important;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 25%;
+  background-color:#B8B8B8;
+  height: 1px;
+  float: right;
+  margin-right: 0px;
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
 }
 
 .btn-group-vertical {
@@ -41,6 +61,6 @@
 }
 
 .tag-item {
-  padding: 2px 2px !important;
+  padding: 1px 1px !important;
 
 }

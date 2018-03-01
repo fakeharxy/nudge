@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Note:back</title>
+    <title>Note|back</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -13,8 +13,8 @@
 
   <body>
     <% if user_signed_in? %>
-      <nav  class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #e2dfdf;">
-        <a class="navbar-brand" href="/">Note:back</a>
+      <nav  class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #146ba0;">
+        <a class="navbar-brand" href="/">Note|back</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,23 +22,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/">Read <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/tags">Organise</a>
+              <a class="nav-link" href="/tags">Importance</a>
             </li>
             <li class="nav-item">
               <%= link_to 'New Note', new_note_path, :class => 'nav-link' %>
             </li>
+            <li class="nav-item">
+          <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'float-right nav-link') %>
+            </li>
           </ul>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'nav-link') %>
         </div>
       </nav>
       <div class="container">
         <div class="col-md-3 d-none d-lg-block sidebar">
           <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <% @tags.each do |t| %>
+            <ul class="list-group list-group-flush">
+              <% @tags.each_with_index do |t,i| %>
+                <% if i > 2 && i%5 == 0 %>
+                  <hr>
+                <% end %>
                 <li class="nav-item">
                   <%= link_to t.name, tag_path(t), :class => 'tag-item nav-link' %>
                 </li>
