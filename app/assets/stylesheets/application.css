@@ -37,13 +37,13 @@ html, main, body, .sidebar, .sidebar-sticky  {
 }
 
 hr {
-  border: 0;
+  border: none;
+  border-top: 1px dotted #f00;
   clear:both;
   display:block;
   width: 25%;
-  background-color:#B8B8B8;
+  background-color:#fff;
   height: 1px;
-  float: right;
   margin-right: 0px;
   margin-top: 3px !important;
   margin-bottom: 3px !important;
