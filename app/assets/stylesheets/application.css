@@ -36,6 +36,10 @@ html, main, body, .sidebar, .sidebar-sticky  {
   padding: .27rem .27rem !important;
 }
 
+.mr-2 {
+  border: 1px solid black;
+}
+
 hr {
   border: none;
   clear:both;
