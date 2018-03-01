@@ -33,20 +33,19 @@ html, main, body, .sidebar, .sidebar-sticky  {
 
 .btn-sm {
   font-size: 0px !important;
-  padding: .25rem .25rem !important;
+  padding: .27rem .27rem !important;
 }
 
 hr {
   border: none;
-  border-top: 1px dotted #f00;
   clear:both;
   display:block;
   width: 25%;
-  background-color:#fff;
+  background-color:#eeefff;
   height: 1px;
-  margin-right: 0px;
-  margin-top: 3px !important;
-  margin-bottom: 3px !important;
+  margin-right: 12px;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
 }
 
 .btn-group-vertical {
