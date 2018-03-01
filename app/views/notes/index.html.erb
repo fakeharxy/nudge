@@ -20,11 +20,11 @@
           <%= link_to (octicon 'trashcan', :height => 20), @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </div>
         <% if @note.urgency_level == "high" %>
-        <span class="urgency-style badge badge-danger float-right"></span>
+          <span title=<%=@note.urgency%> class="urgency-style badge badge-danger float-right"></span>
       <% elsif @note.urgency_level == "medium" %>
-        <span class="urgency-style badge badge-info float-right"></span>
+        <span title=<%=@note.urgency%> class="urgency-style badge badge-info float-right"></span>
       <% else %>
-        <span class="urgency-style badge badge-success "></span>
+        <span title=<%=@note.urgency%> class="urgency-style badge badge-success "></span>
       <% end %>
       </div>
     </div>
