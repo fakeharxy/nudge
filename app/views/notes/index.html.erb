@@ -22,7 +22,7 @@
         <% if @note.urgency_level == "high" %>
           <span title=<%=@note.urgency%> class="urgency-style badge badge-danger float-right"></span>
       <% elsif @note.urgency_level == "medium" %>
-        <span title=<%=@note.urgency%> class="urgency-style badge badge-info float-right"></span>
+        <span title=<%=@note.urgency%> class="urgency-style badge badge-warning float-right"></span>
       <% else %>
         <span title=<%=@note.urgency%> class="urgency-style badge badge-success "></span>
       <% end %>
