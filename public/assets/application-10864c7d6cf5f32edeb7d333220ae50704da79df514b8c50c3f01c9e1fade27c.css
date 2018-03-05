@@ -1,0 +1,149 @@
+/* line 7, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.body-note {
+  resize: none;
+  height: 8em;
+}
+
+/* line 12, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.card-text {
+  margin: 20px;
+  margin-right: 40px;
+}
+
+/* line 17, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.card-body {
+  padding-bottom: 10px !important;
+}
+
+/* line 21, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.sidebar {
+  background: white;
+  color: #000;
+  height: auto;
+  border-radius: 4px;
+  float: left;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+/* line 31, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.card {
+  box-shadow: 3px 3px lightgrey;
+}
+
+/* line 35, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.urgency-style {
+  display: block !important;
+  height: 1px !important;
+  width: 96%;
+  margin-top: 7px;
+  margin-right: -5px;
+}
+
+/* line 43, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.sidebar {
+  width: 30%;
+}
+
+/* line 47, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.content {
+  width: 60%;
+}
+
+/* line 51, /Users/paulharker/projects/nudge/app/assets/stylesheets/notes.scss */
+.red-text {
+  color: red !important;
+}
+/* line 5, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 9, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.importance-style {
+  margin: 10px 10px 2px 0px !important;
+}
+
+/* line 13, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.import {
+  border-color: #818182 !important;
+  border-left-style: dotted !important;
+  border-right-style: dotted !important;
+  border-radius: 0px !important;
+}
+
+/* line 20, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.tag-styles {
+  margin-top: -15px;
+  margin-left: -25px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+html, main, body, .sidebar, .sidebar-sticky  {
+  background-color: #f2faff !important;
+}
+
+.sidebar {
+  right:40px;
+}
+
+.sidebar-sticky {
+  position: static;
+  height: 90%;
+  margin-top: -5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.btn-sm {
+  font-size: 0px !important;
+  padding: .27rem .27rem !important;
+}
+
+.mr-2 {
+  border: 1px solid #d6d7e5;
+}
+
+hr {
+  border: none;
+  clear:both;
+  display:block;
+  width: 25%;
+  background-color:#eeefff;
+  height: 1px;
+  margin-right: 12px;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.btn-group-vertical {
+  position: absolute !important;
+  top: 5px;
+  right: 5px;
+}
+
+.nav-item {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.tag-item {
+  padding: 1px 1px !important;
+
+}
