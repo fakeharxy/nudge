@@ -47,7 +47,7 @@ class Note < ApplicationRecord
   end
 
   def add_secondary_tags(secondary_tags, user_id)
-    self.tags << secondary_tags.split(",").map do |n|
+    self.tags << [secondary_tags].map do |n|
       Tag.where(name: n.strip, user_id: user_id).first_or_create!
     end
     self.save

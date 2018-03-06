@@ -22,13 +22,13 @@ RSpec.describe Note, type: :model do
 
   it 'accepts multiple secondary tags' do
     @bob.add_secondary_tags("hello, this, tags", @user.id)
-    expect(@bob.get_all_tag_names).to eq(["hello", "this", "tags"])
+    expect(@bob.get_all_tag_names).to eq(["hello, this, tags"])
   end
 
   it 'can return both primary and secondary tags' do
     @bob.add_secondary_tags("hello, this, tags", @user.id)
     @bob.add_primary_tag("mike", @user.id)
-    expect(@bob.get_all_tag_names).to eq(["hello", "this", "tags", "mike"])
+    expect(@bob.get_all_tag_names).to eq(["hello, this, tags", "mike"])
   end
 
   it 'can overwrite the importance of a secondary tag when a primary is made' do
