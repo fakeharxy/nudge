@@ -1,9 +1,6 @@
 class Note < ApplicationRecord
-  has_many :note_tags, dependent: :delete_all
-  has_many :tags, -> { distinct }, through: :note_tags
-
-  has_one :primary_note_tag, -> { where primary: true }, class_name: 'NoteTag'
-  has_one :primary_tag, through: :primary_note_tag, source: :tag
+  belongs_to :tag
+  belongs_to :second
 
   belongs_to :user, optional: true
   after_initialize :init
@@ -15,26 +12,45 @@ class Note < ApplicationRecord
   end
 
   def destroy_with_tags
-    oldtag_ids = tag_ids
+    oldtag_ids = tag_id
     destroy
-    Tag.find(oldtag_ids).each do |tag|
+    Tag.find(oldtag_ids) do |tag|
       tag.destroy if tag.notes == []
     end
   end
 
-  def add_primary_tag(tag, user_id)
+  def add_tag(tag, user_id)
     if Tag.exists?(name: tag)
-      self.update(primary_tag: Tag.find_by(name: tag))
-      self.primary_tag.set_importance = 5 if self.primary_tag.importance == nil
+      self.update(tag_id: Tag.find_by(name: tag).id)
+      self.tag.set_importance = 5 if self.tag.importance == nil
       self.save
     else
-      self.primary_tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
+      self.tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
       self.save
     end
   end
 
-  def get_primary_tag_name
-    self.primary_tag.name
+  def update_tag(tag)
+    self.tag.update(name: tag)
+  end
+
+  def update_second(tag)
+    self.second.update(name: tag)
+  end
+
+  def add_second(name, tag_id)
+    if Second.exists?(name: tag)
+      self.update(tag_id: Second.find_by(name: tag).id)
+      self.tag.set_importance = 5 if self.tag.importance == nil
+      self.save
+    else
+      self.second = Second.create!(name: name, tag_id: tag_id)
+      self.save
+    end
+  end
+
+  def get_tag_name
+    self.tag.name
   end
 
   def seen_today?
@@ -46,22 +62,15 @@ class Note < ApplicationRecord
     self.save
   end
 
-  def add_secondary_tags(secondary_tags, user_id)
-    self.tags << [secondary_tags].map do |n|
-      Tag.where(name: n.strip, user_id: user_id).first_or_create!
-    end
-    self.save
-  end
-
   def get_all_tag_names
-    Tag.all.map(&:name)
+    [tag.name, second.name]
   end
 
   def urgency
     if(time_since_last_seen <= 2)
-      self.primary_tag.importance * time_since_last_seen
+      self.tag.importance * time_since_last_seen
     else
-      self.primary_tag.importance * (time_since_last_seen * (time_since_last_seen - 1))
+      self.tag.importance * (time_since_last_seen * (time_since_last_seen - 1))
     end
   end
 

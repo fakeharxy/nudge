@@ -7,13 +7,9 @@
   <% if @note %>
     <div class="card" style="width: 100%;">
       <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted">#<%= @note.get_primary_tag_name %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">#<%= @note.get_tag_name %></h6>
         <%= simple_format(@note.body, class: "card-text") %>
-        <% @note.tags.each_with_index do |t, i| %>
-          <% if i != 0 %>
-            <a href="tags/<%= t.id %>" class="card-link">#<%= t.name %></a>
-          <% end %>
-        <% end %>
+        <a href="tags/<%= @note.second.id %>" class="card-link">#<%= @note.second.name %></a>
         <div class="btn-group-vertical float-right" role="group">
           <%= link_to (octicon 'eye', :height => 20), noteseen_path(@note), :class => 'btn btn-sm btn-primary' %>
           <%= link_to (octicon 'pencil', :height => 20), edit_note_path(@note), :class => 'btn btn-sm btn-success' %>
@@ -21,11 +17,11 @@
         </div>
         <% if @note.urgency_level == "high" %>
           <span title=<%=@note.urgency%> class="urgency-style badge badge-danger float-right"></span>
-      <% elsif @note.urgency_level == "medium" %>
-        <span title=<%=@note.urgency%> class="urgency-style badge badge-warning float-right"></span>
-      <% else %>
-        <span title=<%=@note.urgency%> class="urgency-style badge badge-success "></span>
-      <% end %>
+        <% elsif @note.urgency_level == "medium" %>
+          <span title=<%=@note.urgency%> class="urgency-style badge badge-warning float-right"></span>
+        <% else %>
+          <span title=<%=@note.urgency%> class="urgency-style badge badge-success "></span>
+        <% end %>
       </div>
     </div>
   <% else %>

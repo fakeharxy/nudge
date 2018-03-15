@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'notes#index'
   resources :notes
   resources :tags, only: [:index, :show]
+  resources :seconds, only: [:index, :show]
   devise_for :users
   get "noteseen/:id", to: "notes#seen", as: "noteseen"
   get "reset", to: "notes#reset", as: "reset"

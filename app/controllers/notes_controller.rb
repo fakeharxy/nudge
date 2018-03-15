@@ -25,8 +25,8 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(body: note_params['body'], last_seen: Date.today, user_id: current_user.id)
-    @note.add_primary_tag(note_params['primary_tag'].chomp.downcase, current_user.id)
-    @note.add_secondary_tags(note_params['secondary_tags'].chomp.downcase, current_user.id)
+    @note.add_tag(note_params['tag'].chomp.downcase, current_user.id)
+    @note.add_second(note_params['second'].chomp.downcase, @note.tag.id)
     respond_to do |format|
       if @note.save
         format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
@@ -51,9 +51,12 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
+    @note.update(body: note_params['body'])
+    @note.update_tag(note_params['tag'].chomp.downcase)
+    @note.update_second(note_params['second'].chomp.downcase)
     respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+      if @note.save
+        format.html { redirect_to notes_path, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
       else
         format.html { render :edit }
@@ -94,6 +97,6 @@ class NotesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def note_params
-    params.require(:note).permit(:body, :primary_tag, :secondary_tags)
+    params.require(:note).permit(:body, :tag, :second)
   end
 end

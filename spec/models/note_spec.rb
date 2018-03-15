@@ -7,7 +7,9 @@ RSpec.describe Note, type: :model do
   end
 
   before(:each) do
-    @bob = Note.create!(body: "bob", user_id: @user.id)
+    @tag = Tag.create!(name: "tag")
+    @second = Second.create!(name: "second")
+    @bob = Note.create!(body: "bob", user_id: @user.id, tag_id: @tag.id, second_id: @second.id)
   end
 
   it 'initialises with certain defaults' do
@@ -16,25 +18,12 @@ RSpec.describe Note, type: :model do
   end
 
   it 'accepts a primary tag' do
-    @bob.add_primary_tag("hello", user_id: @user.id)
-    expect(@bob.get_primary_tag_name).to eq("hello")
-  end
-
-  it 'accepts multiple secondary tags' do
-    @bob.add_secondary_tags("hello, this, tags", @user.id)
-    expect(@bob.get_all_tag_names).to eq(["hello, this, tags"])
+    @bob.add_tag("hello", user_id: @user.id)
+    expect(@bob.get_tag_name).to eq("hello")
   end
 
   it 'can return both primary and secondary tags' do
-    @bob.add_secondary_tags("hello, this, tags", @user.id)
-    @bob.add_primary_tag("mike", @user.id)
-    expect(@bob.get_all_tag_names).to eq(["hello, this, tags", "mike"])
-  end
-
-  it 'can overwrite the importance of a secondary tag when a primary is made' do
-    @bob.add_secondary_tags("hello, this, tags", @user.id)
-    @bob.add_primary_tag("hello", @user.id)
-    expect(@bob.primary_tag.importance).to eq(5)
+    expect(@bob.get_all_tag_names).to eq(["tag", "second"])
   end
 
   it 'deletes a tag when the note is deleted' do
