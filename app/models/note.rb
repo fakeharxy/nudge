@@ -20,9 +20,8 @@ class Note < ApplicationRecord
   end
 
   def add_tag(tag, user_id)
-    if Tag.exists?(name: tag)
+    if Tag.exists?(name: tag, user_id: user_id)
       self.update(tag_id: Tag.find_by(name: tag).id)
-      self.tag.set_importance = 5 if self.tag.importance == nil
       self.save
     else
       self.tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
@@ -39,9 +38,8 @@ class Note < ApplicationRecord
   end
 
   def add_second(name, tag_id)
-    if Second.exists?(name: tag)
-      self.update(tag_id: Second.find_by(name: tag).id)
-      self.tag.set_importance = 5 if self.tag.importance == nil
+    if Second.exists?(name: name, tag_id: tag_id)
+      self.update(second_id: Second.find_by(name: name).id)
       self.save
     else
       self.second = Second.create!(name: name, tag_id: tag_id)

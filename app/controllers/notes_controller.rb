@@ -32,7 +32,7 @@ class NotesController < ApplicationController
         format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
       else
-        format.html { render :new }
+        format.html { redirect_to notes_path, notice: @note.errors }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
