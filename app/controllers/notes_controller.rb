@@ -16,6 +16,7 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
+    @alltags = Tag.where(user_id: current_user.id).map{|n| n.name}
   end
 
   # GET /notes/1/edit
