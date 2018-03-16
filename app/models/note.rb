@@ -12,11 +12,11 @@ class Note < ApplicationRecord
   end
 
   def destroy_with_tags
-    oldtag_ids = tag_id
+    oldtag_id = tag_id
+    oldsecond_id = second_id
     destroy
-    Tag.find(oldtag_ids) do |tag|
-      tag.destroy if tag.notes == []
-    end
+    Tag.find_by(id: oldtag_id).destroy if Tag.find_by(id: oldtag_id).notes == []
+    Second.find_by(id: oldsecond_id).destroy if Second.find_by(id: oldsecond_id).notes == []
   end
 
   def add_tag(tag, user_id)
