@@ -29,17 +29,27 @@ class Note < ApplicationRecord
     end
   end
 
-  def update_tag(tag)
-    self.tag.update(name: tag)
+  def update_tag(tag, user_id)
+    if Tag.exists?(name: tag, user_id: user_id)
+      self.update(tag_id: tag_id)
+    else
+      self.tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
+      self.save
+    end
   end
 
-  def update_second(tag)
-    self.second.update(name: tag)
+  def update_second(tag, tag_id)
+    if Second.exists?(name: tag, tag_id: tag_id)
+      self.update(second_id: Second.find_by(name: tag, tag_id: tag_id).id)
+    else
+      self.second = Second.create!(name: tag, tag_id: tag_id)
+      self.save
+    end
   end
 
   def add_second(name, tag_id)
     if Second.exists?(name: name, tag_id: tag_id)
-      self.update(second_id: Second.find_by(name: name).id)
+      self.update(second_id: Second.find_by(name: name, tag_id: tag_id).id)
       self.save
     else
       self.second = Second.create!(name: name, tag_id: tag_id)

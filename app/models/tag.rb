@@ -7,6 +7,10 @@ class Tag < ApplicationRecord
     self.update(importance: importance)
   end
 
+  def cleanup
+    destroy if note_count == 0
+  end
+
   def note_count
     self.notes.uniq.count
   end

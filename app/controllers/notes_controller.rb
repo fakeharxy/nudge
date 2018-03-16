@@ -52,14 +52,18 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     @note.update(body: note_params['body'])
-    @note.update_tag(note_params['tag'].chomp.downcase)
-    @note.update_second(note_params['second'].chomp.downcase)
+    oldtag = @note.tag
+    oldsecond = @note.second
+    @note.update_tag(note_params['tag'].chomp.downcase, current_user.id)
+    @note.update_second(note_params['second'].chomp.downcase, @note.tag.id)
+    oldtag.cleanup
+    oldsecond.cleanup
     respond_to do |format|
       if @note.save
         format.html { redirect_to notes_path, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
       else
-        format.html { render :edit }
+        format.html { redirect_to notes_path, notice: @note.errors}
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
