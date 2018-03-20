@@ -17,7 +17,7 @@ class NotesController < ApplicationController
   def new
     @note = Note.new
     @alltags = Tag.where(user_id: current_user.id).map{|n| n.name}
-    @allseconds = Second.where(user_id: current_user.id).map{|n| n.name}
+    @allseconds = Second.where(user_id: current_user.id).map{|n| n.name}.uniq
   end
 
   # GET /notes/1/edit
