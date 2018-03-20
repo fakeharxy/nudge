@@ -54,6 +54,10 @@
                   <% end %>
                 </li>
               <% end %>
+              <% if @secondslevel %>
+                <hr>
+             <%= link_to "back", '/', :class => "red-text tag-item nav-item nav-link" %>
+           <% end %>
             </ul>
           </div>
         </div>
