@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :notes
   has_many :tags
+  has_many :seconds
 
   def tags_in_order_of_most_used
     tags.all.sort_by{|i| - i.note_count}

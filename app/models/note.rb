@@ -4,7 +4,6 @@ class Note < ApplicationRecord
 
   belongs_to :user, optional: true
   after_initialize :init
-  attr_accessor :secondary_tags
 
   def init
     self.last_seen ||= Date.today
@@ -38,21 +37,21 @@ class Note < ApplicationRecord
     end
   end
 
-  def update_second(tag, tag_id)
+  def update_second(tag, tag_id, user_id)
     if Second.exists?(name: tag, tag_id: tag_id)
-      self.update(second_id: Second.find_by(name: tag, tag_id: tag_id).id)
+      self.update(second_id: Second.find_by(name: tag, tag_id: tag_id).id, user_id: user_id)
     else
-      self.second = Second.create!(name: tag, tag_id: tag_id)
+      self.second = Second.create!(name: tag, tag_id: tag_id, user_id: user_id)
       self.save
     end
   end
 
-  def add_second(name, tag_id)
+  def add_second(name, tag_id, user_id)
     if Second.exists?(name: name, tag_id: tag_id)
-      self.update(second_id: Second.find_by(name: name, tag_id: tag_id).id)
+      self.update(second_id: Second.find_by(name: name, tag_id: tag_id).id, user_id: user_id)
       self.save
     else
-      self.second = Second.create!(name: name, tag_id: tag_id)
+      self.second = Second.create!(name: name, tag_id: tag_id, user_id: user_id)
       self.save
     end
   end

@@ -72,9 +72,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script>
           $(document).ready(function(){
-            $(".dropdown").select2({
+            $(".dropdown1").select2({
               tags: true,
               placeholder: "Primary Tag",
+              selectOnClose: true
+            });
+            $(".select2-selection").on("focus", function () {
+              $(this).parent().parent().prev().select2("open");
+            });
+
+            $(".dropdown2").select2({
+              tags: true,
+              placeholder: "Secondary Tag",
               selectOnClose: true
             });
             $(".select2-selection").on("focus", function () {

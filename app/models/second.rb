@@ -1,6 +1,7 @@
 class Second < ApplicationRecord
   has_many :notes
   belongs_to :tag
+  belongs_to :user
 
   def get_all_notes
     self.notes.uniq

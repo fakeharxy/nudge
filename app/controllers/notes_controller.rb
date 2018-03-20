@@ -17,6 +17,7 @@ class NotesController < ApplicationController
   def new
     @note = Note.new
     @alltags = Tag.where(user_id: current_user.id).map{|n| n.name}
+    @allseconds = Second.where(user_id: current_user.id).map{|n| n.name}
   end
 
   # GET /notes/1/edit
@@ -27,7 +28,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(body: note_params['body'], last_seen: Date.today, user_id: current_user.id)
     @note.add_tag(note_params['tag'].chomp.downcase, current_user.id)
-    @note.add_second(note_params['second'].chomp.downcase, @note.tag.id)
+    @note.add_second(note_params['second'].chomp.downcase, @note.tag.id, current_user.id)
     respond_to do |format|
       if @note.save
         format.html { redirect_to notes_path, notice: 'Note was successfully created.' }

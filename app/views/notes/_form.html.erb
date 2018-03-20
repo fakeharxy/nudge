@@ -19,7 +19,7 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <select name="note[tag]" class="dropdown form-control" placeholder="Primary Tag" required="true">
+      <select name="note[tag]" class="dropdown1 form-control" required="true">
         <option></option>
         <% @alltags.each do |tag| %>
           <option><%= tag %></option>
@@ -28,7 +28,12 @@
     </div>
 
     <div class="form-group col-md-6">
-      <%= f.text_field :second, class: "form-control", placeholder: "Secondary Tag", required: true %>
+      <select name="note[second]" class="dropdown2 form-control" required="true">
+        <option></option>
+        <% @allseconds.each do |tag| %>
+          <option><%= tag %></option>
+        <% end %>
+      </select>
     </div>
   </div>
 
