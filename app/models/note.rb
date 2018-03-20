@@ -31,7 +31,7 @@ class Note < ApplicationRecord
 
   def update_tag(tag, user_id)
     if Tag.exists?(name: tag, user_id: user_id)
-      self.update(tag_id: tag_id)
+      self.update(tag_id: Tag.find_by(name: tag, user_id: user_id).id)
     else
       self.tag = Tag.create!(name: tag, importance: 5, user_id: user_id)
       self.save
