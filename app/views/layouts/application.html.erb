@@ -43,7 +43,7 @@
           <div class="sidebar-sticky">
             <ul class="list-group list-group-flush">
               <% @tags.each_with_index do |t,i| %>
-                <% if i > 2 && i%4 == 0 %>
+                <% if (i > 2 && i%4 == 0) && !@secondslevel %>
                   <hr>
                 <% end %>
                 <li class="nav-item">
