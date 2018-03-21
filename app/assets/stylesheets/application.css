@@ -50,8 +50,6 @@ html, main, body, .sidebar, .sidebar-sticky  {
   padding-left: .300rem !important;
 }
 
-
-
 .sidebar-sticky {
   position: static;
   height: 90%;
@@ -61,9 +59,14 @@ html, main, body, .sidebar, .sidebar-sticky  {
   background-color: white;
 }
 
-.btn-sm {
+.btn-next-selector {
   font-size: 0px !important;
-  padding: .27rem .27rem !important;
+  padding: .5rem .7rem !important;
+}
+
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .mr-2 {
@@ -82,10 +85,20 @@ hr {
   margin-bottom: 2px !important;
 }
 
+.next-selector {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+}
+
 .btn-group-vertical {
   position: absolute !important;
-  top: 5px;
-  right: 5px;
+  top: 10px !important;
+  right: 10px !important;
+}
+
+.dropleft .dropdown-menu {
+  margin-right: 4rem !important;
 }
 
 .nav-item {
@@ -95,5 +108,21 @@ hr {
 
 .tag-item {
   padding: 1px 1px !important;
+
+}
+@media (max-width: 767px) {
+  .next-selector {
+    position: relative !important;
+    top: 68px !important;
+    left: 19px !important;
+  }
+
+  .btn-next-selector {
+    font-size: 0px !important;
+    padding: .7rem 1.2rem !important;
+  }
+  .card-text {
+    margin-right: 10px !important;
+  }
 
 }
