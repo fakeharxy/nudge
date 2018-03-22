@@ -80,18 +80,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script>
           $(document).ready(function(){
-            var slider = new Slider("#ex13", {
-              ticks: [0, 5, 10, 15, 20, 25],
-              ticks_labels: ['', '5', '10', '15', '20', 'all'],
-              ticks_snap_bounds: 5
-            });
-
-            slider.on("slideStop", function(sliderValue) {
-              if (sliderValue >=5 ) {
-                window.location.replace("/selectValue/" + sliderValue);
-              }
-            });
-
             $(".dropdown1").select2({
               tags: true,
               placeholder: "Primary Tag",
