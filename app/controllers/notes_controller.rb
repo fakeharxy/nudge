@@ -57,7 +57,7 @@ class NotesController < ApplicationController
     oldtag = @note.tag
     oldsecond = @note.second
     @note.update_tag(note_params['tag'].chomp.downcase, current_user.id)
-    @note.update_second(note_params['second'].chomp.downcase, @note.tag.id)
+    @note.update_second(note_params['second'].chomp.downcase, @note.tag.id, current_user.id)
     oldtag.cleanup
     oldsecond.cleanup
     respond_to do |format|
