@@ -21,6 +21,28 @@ html, main, body, .sidebar, .sidebar-sticky  {
 .sidebar {
   right:40px;
 }
+
+.slider-handle {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.slider-tick {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.slider.slider-horizontal {
+  width: 315px !important;
+  height: 30px !important;
+}
+
+.slider-tick-label {
+  padding-top: 12px !important;
+  font-weight: bold;
+  padding-left: 10px !important;
+}
+
 .select2-container .select2-selection--single {
   height: 38px !important;
   border-color: #ced4db !important;
