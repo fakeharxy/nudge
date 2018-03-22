@@ -28,22 +28,26 @@ html, main, body, .sidebar, .sidebar-sticky  {
 }
 
 .slider-tick {
+  border: dotted 2px #2e6da4 !important;
   width: 35px !important;
   height: 35px !important;
+  opacity: 1 !important;
 }
 
 .slider.slider-horizontal {
   width: 100% !important;
-  max-width: 390px !important;
+  max-width: 450px !important;
   height: 35px !important;
-  margin: 10px auto;
-  right: 10px;
+  margin: 30px auto !important;
+  right: 10px !important;
+  display: block !important;
 }
 
 .slider-tick-label {
   padding-top: 18px !important;
   font-weight: bold;
-  padding-left: 12px !important;
+  padding-left: 17px !important;
+  margin-top: 20px !important;
 }
 
 .select2-container .select2-selection--single {
