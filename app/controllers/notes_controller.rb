@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
-  before_action :set_tags, only: [:new, :index, :show, :edit, :update]
+  before_action :set_tags, only: [:select, :new, :index, :show, :edit, :update]
   # GET /notes
   # GET /notes.json
   def index
@@ -18,6 +18,9 @@ class NotesController < ApplicationController
     @note = Note.new
     @alltags = Tag.where(user_id: current_user.id).map{|n| n.name}
     @allseconds = Second.where(user_id: current_user.id).map{|n| n.name}.uniq
+  end
+
+  def select
   end
 
   # GET /notes/1/edit
