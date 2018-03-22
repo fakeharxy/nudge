@@ -1,12 +1,19 @@
 class NotesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
   before_action :set_tags, only: [:select, :new, :index, :show, :edit, :update]
   # GET /notes
   # GET /notes.json
+
   def index
     run_clean_up if clean_up_required?
-    @note = current_user.notes.get_most_urgent
+    if session[:count] > 0
+      @note = current_user.notes.get_most_urgent
+      session[:count] = session[:count] - 1
+    else
+      redirect_to '/'
+    end
   end
 
   # GET /notes/1
@@ -21,6 +28,11 @@ class NotesController < ApplicationController
   end
 
   def select
+  end
+
+  def selectvalue
+    session[:count] = params['id'].to_i
+    redirect_to notes_path
   end
 
   # GET /notes/1/edit

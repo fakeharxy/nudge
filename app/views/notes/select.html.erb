@@ -2,5 +2,12 @@
 <% flash.each do %>
   <p id="notice" role="alert" class="alert alert-success"><%= notice %></p>
 <% end %>
-        <input id="ex13" type="text" data-slider-ticks="[0, 5, 10, 15, 20, 25]" data-slider-ticks-snap-bounds="100" data-slider-ticks-labels='["0", "5", "10", "15", "20", "all"]'/>
+
+<% if session[:count] == 0 %>
+  <p> That's your lot for now! Enjoy your day! </p>
+  <p> Unless you really want some more? </p>
+<% else %>
+<p> How many notes would you like to view? </p>
+<% end %>
+        <input id="ex13" type="text" data-slider-ticks="[0, 5, 10, 15, 20, 25]" data-slider-ticks-snap-bounds="100" data-slider-value="0" data-slider-ticks-labels='["0", "5", "10", "15", "20", "all"]'/>
 </main>

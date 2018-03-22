@@ -86,8 +86,10 @@
               ticks_snap_bounds: 5
             });
 
-            slider.on("stop", function(sliderValue) {
-              alert(sliderValue);
+            slider.on("slideStop", function(sliderValue) {
+              if (sliderValue >=5 ) {
+                window.location.replace("/selectValue/" + sliderValue);
+              }
             });
 
             $(".dropdown1").select2({
@@ -95,6 +97,7 @@
               placeholder: "Primary Tag",
               selectOnClose: true
             });
+
             $(".select2-selection").on("focus", function () {
               $(this).parent().parent().prev().select2("open");
             });
