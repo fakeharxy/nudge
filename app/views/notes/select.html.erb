@@ -3,7 +3,7 @@
   <p id="notice" role="alert" class="alert alert-success"><%= notice %></p>
 <% end %>
 
-<% if @urgencies[0] && session[:count] != 0 %>
+<% if @urgencies[0] && @session_count != 0 %>
   <p id="notice" role="alert" class="alert alert-success">You're up to date on viewing your notes!</p>
 <% end %>
 

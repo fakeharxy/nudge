@@ -28,6 +28,8 @@ class NotesController < ApplicationController
   end
 
   def select
+    @session_count = session[:count]
+    session[:count] = nil
   end
 
   def selectvalue
