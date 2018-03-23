@@ -3,6 +3,9 @@
   <p id="notice" role="alert" class="alert alert-success"><%= notice %></p>
 <% end %>
 
+<% if @urgencies[0] && session[:count] != 0 %>
+  <p id="notice" role="alert" class="alert alert-success">You're up to date on viewing your notes!</p>
+<% end %>
 
 <% if session[:count] == 0 %>
   <p> That's your lot for now! Enjoy your day! </p>
