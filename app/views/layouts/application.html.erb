@@ -30,7 +30,7 @@
               <%= link_to 'write', new_note_path, :class => 'nav-link' %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/tags">set importance</a>
+              <a class="nav-link" href="/tags">tags</a>
             </li>
           </ul>
           <ul class="navbar-nav float-right">
@@ -58,7 +58,7 @@
               <% end %>
               <% if @secondslevel %>
                 <hr>
-                <%= link_to "back", '/', :class => "red-text tag-item nav-item nav-link" %>
+                <%= link_to "back", :back, :class => "red-text tag-item nav-item nav-link" %>
               <% end %>
             </ul>
           </div>

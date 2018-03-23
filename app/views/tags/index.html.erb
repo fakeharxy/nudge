@@ -6,7 +6,7 @@
 
 <div class="tag-styles col-sm-7">
   <% @taglist.each do |t| %>
-    <p class="importance-style"><%= t.name %></p>
+    <p class="importance-style"><a href="tags/<%= t.id %>"><%= t.name %></a></p>
     <div class="btn-group mr-2" role="group" aria-label="First group">
       <% (1..9).each do |n| %>
         <% if n == t.importance %>
