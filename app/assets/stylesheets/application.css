@@ -29,6 +29,12 @@ h3 {
   border-radius: 0px !important;
 }
 
+.urg-success {
+  padding: 0px 3px !important;
+  margin-top: 5px !important;
+}
+
+
 .urg-group {
   margin-left: 13px !important;
 }
@@ -58,7 +64,7 @@ h3 {
   max-width: 450px !important;
   height: 35px !important;
   margin: 30px auto !important;
-  right: 10px !important;
+  right: -5px !important;
   display: inline-block !important;
 }
 
@@ -191,6 +197,10 @@ hr {
     padding-bottom: 35px;
   }
 
+  .slider.slider-horizontal {
+    right: 10px !important;
+  }
+  
   .next-selector {
     position: relative !important;
     top: 68px !important;
