@@ -40,14 +40,14 @@ html, main, body, .sidebar, .sidebar-sticky  {
   height: 35px !important;
   margin: 30px auto !important;
   right: 10px !important;
-  display: block !important;
+  display: inline-block !important;
 }
 
 .slider-tick-label {
   padding-top: 18px !important;
   font-weight: bold;
   padding-left: 17px !important;
-  margin-top: 20px !important;
+  margin-top: 5px !important;
 }
 
 .select2-container .select2-selection--single {
