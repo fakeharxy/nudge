@@ -18,8 +18,27 @@ html, main, body, .sidebar, .sidebar-sticky  {
   background-color: #f2faff !important;
 }
 
+h3 {
+  display: inline !important;
+}
+
+.urg-note {
+  margin: 4px 0px;
+  width: auto;
+  padding: 5px 9px !important;
+  border-radius: 0px !important;
+}
+
+.urg-group {
+  margin-left: 13px !important;
+}
+
 .sidebar {
   right:40px;
+}
+
+.navbar-brand {
+  margin-right: .5rem !important;
 }
 
 .slider-handle {

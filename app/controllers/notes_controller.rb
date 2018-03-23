@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
+  before_action :set_urgency
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
   before_action :set_tags, only: [:select, :new, :index, :show, :edit, :update]
   # GET /notes
@@ -105,6 +106,10 @@ class NotesController < ApplicationController
 
   def set_tags
     @tags = current_user.tags_in_order_of_most_used
+  end
+
+  def set_urgency
+    @urgencies = current_user.notes.return_urgencies
   end
 
   def clean_up_required?

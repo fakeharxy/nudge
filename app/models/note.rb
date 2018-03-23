@@ -92,6 +92,13 @@ class Note < ApplicationRecord
     end
   end
 
+  def self.return_urgencies
+    note = Note.all
+    [note.select{ |u| u.urgency_level == "low" }.count,
+     note.select{ |u| u.urgency_level == "medium" }.count,
+     note.select{ |u| u.urgency_level == "high" }.count]
+  end
+
   def self.get_most_urgent
     Note.where("seentoday = false").sort_by{|i| - i.urgency}.first
   end

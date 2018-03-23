@@ -16,7 +16,12 @@
   <body>
     <% if user_signed_in? %>
       <nav  class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #146ba0;">
-        <a class="navbar-brand" href="/">note|back</a>
+        <a class="navbar-brand" href="/">note|back
+          <span class="urg-group">
+          <span class="badge badge-danger urg-note float-right"><%= @urgencies[2] %></span>
+            <span class="badge badge-warning urg-note float-right"><%= @urgencies[1] %></span>
+            <span class="badge badge-success urg-note float-right"><%= @urgencies[0] %></span></span>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
