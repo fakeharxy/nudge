@@ -6,6 +6,9 @@
 <% if @session_count == 0 %>
   <p> That's your lot for now! Enjoy your day! </p>
   <p> Unless you really want some more? </p>
+<% elsif @urgencies[1] == 0 && @urgencies[2] == 0 %>
+  <p> As you can see above, none of your notes require viewing. <p>
+  <p> Of couse, that's not to stop you seeing a few more. </p>
 <% else %>
   <p> How many notes would you like to view? </p>
 <% end %>
