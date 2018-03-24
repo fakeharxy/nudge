@@ -8,7 +8,7 @@ class NotesController < ApplicationController
 
   def index
     run_clean_up if clean_up_required?
-    if session[:count] > 0
+    if session[:count] && session[:count] > 0
       @note = current_user.notes.get_most_urgent
       session[:count] = session[:count] - 1
     else

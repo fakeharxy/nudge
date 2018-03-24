@@ -100,7 +100,7 @@ class Note < ApplicationRecord
   end
 
   def self.get_most_urgent
-    Note.where("seentoday = false").sort_by{|i| - i.urgency}.first
+    Note.where("seentoday = false").sort_by{|i| - (i.urgency + rand(10))}.first
   end
 
   def mark_as_seen
