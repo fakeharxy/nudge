@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :set_urgency
   
   def set_urgency
-    @urgencies = current_user.notes.return_urgencies
+    @urgencies = current_user.notes.return_urgencies if user_signed_in?
   end
 end
