@@ -8,12 +8,7 @@ class NotesController < ApplicationController
 
   def index
     run_clean_up if clean_up_required?
-    if session[:count] && session[:count] > 0
-      @note = current_user.notes.get_most_urgent
-      session[:count] = session[:count] - 1
-    else
-      redirect_to '/'
-    end
+    @note = current_user.notes.get_most_urgent
   end
 
   # GET /notes/1
@@ -27,15 +22,15 @@ class NotesController < ApplicationController
     @allseconds = Second.where(user_id: current_user.id).map{|n| n.name}.uniq
   end
 
-  def select
-    @session_count = session[:count]
-    session[:count] = nil
-  end
+  # def select
+    # @session_count = session[:count]
+    # session[:count] = nil
+  # end
 
-  def selectvalue
-    session[:count] = params['id'].to_i
-    redirect_to notes_path
-  end
+  # def selectvalue
+    # session[:count] = params['id'].to_i
+    # redirect_to notes_path
+  # end
 
   # GET /notes/1/edit
   def edit; end
@@ -43,7 +38,10 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(body: note_params['body'], last_seen: Date.today, user_id: current_user.id)
+    importance = 5
+    importance = 3 if params['commit'] == 'low'
+    importance = 7 if params['commit'] == 'high'
+    @note = Note.new(body: note_params['body'], last_seen: Date.today, user_id: current_user.id, importance: importance)
     @note.add_tag(note_params['tag'].chomp.downcase, current_user.id)
     @note.add_second(note_params['second'].chomp.downcase, @note.tag.id, current_user.id)
     respond_to do |format|
@@ -58,7 +56,7 @@ class NotesController < ApplicationController
   end
 
   def seen
-    @note.mark_as_seen
+    @note.mark_as_seen(params['format'])
     redirect_to notes_path
   end
 

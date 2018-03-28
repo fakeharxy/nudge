@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320114239) do
+ActiveRecord::Schema.define(version: 20180328123008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180320114239) do
     t.integer  "user_id"
     t.integer  "tag_id"
     t.integer  "second_id"
+    t.integer  "importance"
     t.index ["second_id"], name: "index_notes_on_second_id", using: :btree
     t.index ["tag_id"], name: "index_notes_on_tag_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree

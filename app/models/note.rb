@@ -7,6 +7,7 @@ class Note < ApplicationRecord
 
   def init
     self.last_seen ||= Date.today
+    self.importance ||= 5
     self.seentoday ||= false
   end
 
@@ -75,9 +76,9 @@ class Note < ApplicationRecord
 
   def urgency
     if(time_since_last_seen <= 2)
-      self.tag.importance * time_since_last_seen
+      self.importance * time_since_last_seen
     else
-      self.tag.importance * (time_since_last_seen * (time_since_last_seen - 1))
+      self.importance * (time_since_last_seen * (time_since_last_seen - 1))
     end
   end
 
@@ -100,10 +101,13 @@ class Note < ApplicationRecord
   end
 
   def self.get_most_urgent
-    Note.where("seentoday = false").sort_by{|i| - (i.urgency + rand(10))}.first
+    Note.where("seentoday = false").sort_by{|i| - i.urgency}.first
   end
 
-  def mark_as_seen
+  def mark_as_seen(format = nil)
+    if format
+      format == 'plus' ? self.update(importance: self.importance + 1) : self.update(importance: self.importance - 1)
+    end
     self.set_last_seen = Date.today
     self.update(seentoday: true)
   end
