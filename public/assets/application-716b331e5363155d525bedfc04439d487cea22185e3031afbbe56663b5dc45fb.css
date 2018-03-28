@@ -1,0 +1,321 @@
+/* line 7, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.body-note {
+  resize: none;
+  height: 20em;
+}
+
+/* line 12, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.card-text {
+  margin: 20px;
+  margin-right: 40px;
+}
+
+/* line 17, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.card-body {
+  padding-bottom: 10px !important;
+}
+
+/* line 21, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.sidebar {
+  background: white;
+  color: #000;
+  height: auto;
+  border-radius: 4px;
+  float: left;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+/* line 31, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.card {
+  box-shadow: 3px 3px lightgrey;
+}
+
+/* line 35, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.urgency-style {
+  display: block !important;
+  height: 1px !important;
+  width: 96%;
+  margin-top: 7px;
+  margin-right: -5px;
+}
+
+/* line 43, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.sidebar {
+  width: 30%;
+}
+
+/* line 47, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.content {
+  width: 60%;
+}
+
+/* line 51, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.red-text {
+  color: red !important;
+}
+
+@media (max-width: 767px) {
+  /* line 56, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+  .card-body {
+    padding-bottom: 0px !important;
+  }
+}
+/* line 5, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 9, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.importance-style {
+  margin: 10px 10px 2px 0px !important;
+}
+
+/* line 13, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.import {
+  border-color: #818182 !important;
+  border-left-style: dotted !important;
+  border-right-style: dotted !important;
+  border-radius: 0px !important;
+}
+
+/* line 20, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.tag-styles {
+  margin-top: -15px;
+  margin-left: -25px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+html, main, body, .sidebar, .sidebar-sticky  {
+  background-color: #f2faff !important;
+}
+
+h3 {
+  display: inline !important;
+}
+
+.urg-note {
+  margin: 4px 0px;
+  width: auto;
+  padding: 5px 9px !important;
+  border-radius: 0px !important;
+}
+
+.urg-group {
+  margin-left: 13px !important;
+}
+
+.sidebar {
+  right:40px;
+}
+
+.navbar-brand {
+  margin-right: .5rem !important;
+}
+
+.slider-handle {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.slider-tick {
+  border: outset 2px #2e6da4 !important;
+  width: 35px !important;
+  height: 35px !important;
+  opacity: 1 !important;
+}
+
+.slider.slider-horizontal {
+  width: 100% !important;
+  max-width: 450px !important;
+  height: 35px !important;
+  margin: 30px auto !important;
+  right: -5px !important;
+  display: inline-block !important;
+}
+
+.slider-tick-label {
+  padding-top: 18px !important;
+  font-weight: bold;
+  padding-left: 17px !important;
+  margin-top: 5px !important;
+}
+
+.select2-container .select2-selection--single {
+  height: 38px !important;
+  border-color: #ced4db !important;
+}
+
+.form-group .select2-container {
+  position: relative !important;
+  z-index: 2 !important;
+  float: left !important;
+  width: 100% !important;
+  margin-bottom: 0 !important;
+  display: table !important;
+  table-layout: fixed !important;
+}
+
+.select2-selection__rendered {
+  padding: .250rem .100rem;
+  font-size: 1rem;
+}
+
+.select2-selection__arrow {
+  display: none;
+}
+
+.select2-selection__placeholder {
+  color: #6b747d !important;
+  padding-left: .300rem !important;
+}
+
+.sidebar-sticky {
+  position: static;
+  height: 90%;
+  margin-top: -5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.btn-next-selector {
+  font-size: 0px !important;
+  padding: .5rem .7rem !important;
+}
+
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.mr-2 {
+  border: 1px solid #d6d7e5;
+}
+
+hr {
+  border: none;
+  clear:both;
+  display:block;
+  width: 25%;
+  background-color:#eeefff;
+  height: 1px;
+  margin-right: 12px;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.next-selector {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+}
+
+.btn-plus {
+  font-size: 0px !important;
+  padding: .6rem .6rem .4rem .5rem !important;
+}
+
+.btn-minus {
+  font-size: 0px !important;
+  padding: .55rem .6rem .4rem .55rem !important;
+}
+
+.btn-group-vertical {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+}
+
+.dropleft .dropdown-menu {
+  margin-right: 4rem !important;
+}
+
+.nav-item {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.tag-item {
+  padding: 1px 1px !important;
+
+}
+
+.card-body {
+  padding-left: 1.6rem !important;
+}
+
+.urgency{
+  height: calc(100% + 4px);
+  height: -moz-calc(100% + 4px);
+  height: -webkit-calc(100% + 4px);
+  height: -o-calc(100% + 4px);
+  width: 13px;
+  position: absolute;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.urgency-high {
+  background-color: red;
+}
+
+.urgency-medium {
+  background-color: orange;
+}
+
+.urgency-low {
+  background-color: green;
+}
+
+@media (max-width: 767px) {
+
+  .container {
+    padding-bottom: 35px;
+  }
+
+  .slider.slider-horizontal {
+    right: 10px !important;
+  }
+
+  .next-selector {
+    position: relative !important;
+    top: 68px !important;
+    left: 19px !important;
+    margin-bottom: 10px;
+  }
+
+  .btn-next-selector {
+    font-size: 0px !important;
+    padding: .7rem 1rem !important;
+  }
+
+  .btn-plus {
+    font-size: 0px !important;
+    padding: .8rem .7rem .4rem .7rem !important;
+  }
+
+  .btn-minus {
+    font-size: 0px !important;
+    padding: .8rem .8rem .4rem .8rem !important;
+  }
+
+  .card-text {
+    margin-right: 0px !important;
+  }
+
+}
