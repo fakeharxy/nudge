@@ -1,3 +1,80 @@
+/* line 7, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.body-note {
+  resize: none;
+  height: 20em;
+}
+
+/* line 12, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.card-text {
+  margin: 20px;
+  margin-right: 40px;
+}
+
+/* line 17, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.card-body {
+  padding-bottom: 10px !important;
+}
+
+/* line 21, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.sidebar {
+  background: white;
+  color: #000;
+  height: auto;
+  border-radius: 4px;
+  float: left;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+/* line 31, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.card {
+  box-shadow: 3px 3px lightgrey;
+}
+
+/* line 35, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.sidebar {
+  width: 30%;
+}
+
+/* line 39, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.content {
+  width: 60%;
+}
+
+/* line 43, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+.red-text {
+  color: red !important;
+}
+
+@media (max-width: 767px) {
+  /* line 48, /Users/paulharker/projects/noteback/app/assets/stylesheets/notes.scss */
+  .card-body {
+    padding-bottom: 0px !important;
+  }
+}
+/* line 5, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 9, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.importance-style {
+  margin: 10px 10px 2px 0px !important;
+}
+
+/* line 13, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.import {
+  border-color: #818182 !important;
+  border-left-style: dotted !important;
+  border-right-style: dotted !important;
+  border-radius: 0px !important;
+}
+
+/* line 20, /Users/paulharker/projects/nudge/app/assets/stylesheets/tags.scss */
+.tag-styles {
+  margin-top: -15px;
+  margin-left: -25px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,9 +87,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
+
 
 html, main, body, .sidebar, .sidebar-sticky  {
   background-color: #f2faff !important;
