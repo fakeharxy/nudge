@@ -7,18 +7,10 @@
 <div class="tag-styles col-sm-7">
   <% @taglist.each do |t| %>
     <p class="importance-style"><a href="tags/<%= t.id %>"><%= t.name %></a></p>
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-      <% (1..9).each do |n| %>
-        <% if n == t.importance %>
-          <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn import btn-light active" %>
-        <% else %>
-          <%= link_to n.to_s, changeimportance_path(tagID:t.id, noteNum:n), class: "btn import btn-light" %>
-        <% end %>
       <% end %>
-    </div>
-  <% end %>
 </div>
 
 <br>
 
+<%= link_to "back", notes_path, :class => "red-text tag-item nav-item nav-link" %>
 </main>

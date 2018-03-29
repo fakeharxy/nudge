@@ -112,6 +112,11 @@ h3 {
   padding: .5rem .7rem !important;
 }
 
+.btn-next-show {
+  font-size: 0px !important;
+  padding: .5rem .7rem !important;
+}
+
 .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none !important;
@@ -139,14 +144,23 @@ hr {
   right: 10px !important;
 }
 
-.btn-plus {
-  font-size: 0px !important;
-  padding: .6rem .6rem .4rem .5rem !important;
+.next-selector-show {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+}
+
+.urgency-style {
+  display: block !important;
+  height: 1px !important;
+  width: 96%;
+  margin-top: 7px;
+  margin-right: -5px;
 }
 
 .btn-minus {
   font-size: 0px !important;
-  padding: .55rem .6rem .4rem .55rem !important;
+  padding: .5rem .7rem .5rem .7rem !important;
 }
 
 .btn-group-vertical {
@@ -201,6 +215,10 @@ hr {
     padding-bottom: 35px;
   }
 
+  .dropleft .dropdown-menu {
+    margin-right: 4rem !important;
+  }
+
   .slider.slider-horizontal {
     right: 10px !important;
   }
@@ -217,14 +235,9 @@ hr {
     padding: .7rem 1rem !important;
   }
 
-  .btn-plus {
-    font-size: 0px !important;
-    padding: .8rem .7rem .4rem .7rem !important;
-  }
-
   .btn-minus {
     font-size: 0px !important;
-    padding: .8rem .8rem .4rem .8rem !important;
+    padding: .66rem .8rem .3rem .8rem !important;
   }
 
   .card-text {

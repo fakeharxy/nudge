@@ -2,13 +2,23 @@ class NotesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
-  before_action :set_tags, only: [:select, :new, :index, :show, :edit, :update]
+  before_action :set_tags, only: [:view, :select, :new, :index, :show, :edit, :update]
   # GET /notes
   # GET /notes.json
 
   def index
     run_clean_up if clean_up_required?
     @note = current_user.notes.get_most_urgent
+    if @urgencies[1] != 0
+      render :index
+    else
+      render :select
+    end
+  end
+  
+  def view
+    @note = current_user.notes.get_most_urgent
+    render :index
   end
 
   # GET /notes/1
@@ -38,9 +48,7 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    importance = 5
-    importance = 3 if params['commit'] == 'low'
-    importance = 7 if params['commit'] == 'high'
+    importance = 8
     @note = Note.new(body: note_params['body'], last_seen: Date.today, user_id: current_user.id, importance: importance)
     @note.add_tag(note_params['tag'].chomp.downcase, current_user.id)
     @note.add_second(note_params['second'].chomp.downcase, @note.tag.id, current_user.id)
@@ -57,12 +65,13 @@ class NotesController < ApplicationController
 
   def seen
     @note.mark_as_seen(params['format'])
-    redirect_to notes_path
+    redirect_to notes_path if @urgencies[1] >= 1
+    redirect_to view_path if @urgencies[1] == 0
   end
 
   def reset
     Note.reset_seen_status(current_user.id)
-    redirect_to notes_path
+    redirect_to view_path
   end
 
   # PATCH/PUT /notes/1

@@ -84,9 +84,7 @@ class Note < ApplicationRecord
 
   def urgency_level
     case
-    when self.urgency >= 40
-      return "high"
-    when self.urgency >= 15
+    when self.urgency >= 18
       return "medium"
     else
       return "low"
@@ -105,8 +103,8 @@ class Note < ApplicationRecord
   end
 
   def mark_as_seen(format = nil)
-    if format
-      format == 'plus' ? self.update(importance: self.importance + 1) : self.update(importance: self.importance - 1)
+    if format && self.importance < 1
+      self.update(importance: self.importance - 1)
     end
     self.set_last_seen = Date.today
     self.update(seentoday: true)
