@@ -84,7 +84,7 @@ class Note < ApplicationRecord
 
   def urgency_level
     case
-    when self.urgency >= 18
+    when self.urgency >= 25
       return "medium"
     else
       return "low"
