@@ -11,8 +11,7 @@
         <%= simple_format(@note.body, class: "card-text") %>
         <a href="tags/<%= @note.second.id %>" class="card-link">#<%= @note.second.name %></a>
         <div class="btn-group dropleft next-selector float-right" role="group">
-          <%= link_to (octicon 'eye', :height => 20), noteseen_path(@note), :class => 'btn btn-sm btn-primary btn-next-selector' %>
-          <%= link_to (octicon 'verified', :height => 20), noteseen_path(@note, "minus"), :class => 'btn btn-sm btn-success btn-minus' %>
+          <%= link_to (octicon 'eye', :height => 20), noteseen_path(@note, "minus"), :class => 'btn btn-sm btn-primary btn-next-selector' %>
           <button class="btn btn-sm btn-next-selector btn-light active dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= octicon "kebab-vertical" %>
           </button>

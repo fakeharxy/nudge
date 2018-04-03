@@ -78,7 +78,7 @@ class Note < ApplicationRecord
     if(time_since_last_seen <= 2)
       self.importance * time_since_last_seen
     else
-      self.importance * (time_since_last_seen * (time_since_last_seen - 1))
+      self.importance * (time_since_last_seen * (time_since_last_seen - 2))
     end
   end
 
