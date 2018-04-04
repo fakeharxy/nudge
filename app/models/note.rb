@@ -75,7 +75,7 @@ class Note < ApplicationRecord
   end
 
   def urgency
-    if(time_since_last_seen <= 2)
+    if(time_since_last_seen <= 3)
       self.importance * time_since_last_seen
     else
       self.importance * (time_since_last_seen * (time_since_last_seen - 2))

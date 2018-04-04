@@ -7,8 +7,8 @@ RSpec.describe Note, type: :model do
   end
 
   before(:each) do
-    @tag = Tag.create!(name: "tag")
-    @second = Second.create!(name: "second")
+    @tag = Tag.create!(name: "tag", user_id: @user.id)
+    @second = Second.create!(name: "second", tag_id: @tag.id, user_id: @user.id)
     @bob = Note.create!(body: "bob", user_id: @user.id, tag_id: @tag.id, second_id: @second.id)
   end
 
