@@ -8,6 +8,7 @@ class NotesController < ApplicationController
 
   def index
     run_clean_up if clean_up_required?
+    sort_out_tags
     @note = current_user.notes.get_most_urgent
     if @urgencies[1] != 0
       render :index
@@ -108,6 +109,11 @@ class NotesController < ApplicationController
 
   private
 
+  def sort_out_tags
+    current_user.notes.each do |note|
+      note.second.update(user_id: current_user.id)
+    end
+  end
   # Use callbacks to share common setup or constraints between actions.
   def set_note
     @note = Note.find(params[:id])

@@ -28,7 +28,7 @@
     <% elsif note.urgency_level == "medium" %>
       <span title=<%=note.urgency%> class="urgency urgency-medium float-left"></span>
     <% else %>
-      <span title=<%note.urgency%> class="urgency urgency-low float-left"></span>
+      <span title=<%=note.urgency%> class="urgency urgency-low float-left"></span>
     <% end %>
     <div class="urgency float-left"> </div>
       </div>
