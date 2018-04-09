@@ -10,7 +10,9 @@ class NotesController < ApplicationController
     run_clean_up if clean_up_required?
     if session['count'] == 0 || session['count'] == nil
       select
+      render :index
     elsif session['count'] == 1
+      session['count'] = nil
       render :select
     else
       @note = current_user.notes.get_most_urgent
@@ -37,7 +39,7 @@ class NotesController < ApplicationController
   def select
     session[:count] = 11
     @note = current_user.notes.get_most_urgent
-    render :index
+    @progress = 10
   end
 
   # def selectvalue
