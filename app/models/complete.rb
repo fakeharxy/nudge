@@ -1,5 +1,5 @@
 class Complete < ApplicationRecord
-  belongs_to :user_id
-  belongs_to :tag_id
-  belongs_to :second_id
+  belongs_to :user, optional: true
+  belongs_to :tag
+  belongs_to :second
 end

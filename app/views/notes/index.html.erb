@@ -31,10 +31,7 @@
     </div>
     <br>
 
-    <p>  <%= link_to "Create a new note...", new_note_path %> </p>
-
   <% else %>
-    <p>  <%= link_to "Create a new note...", new_note_path %> </p>
     <p> You've seen all your notes today. </p>
     <p> <img class='sun' src="images/sun.png" height='200'> </p>
     <p> I'd recommend going outside or drawing a picture, but if you really want to see more, you can  <%= link_to 'Reset', reset_path() %> your note stack and see them all again! </p>

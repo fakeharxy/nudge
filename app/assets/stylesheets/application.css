@@ -34,6 +34,14 @@ h3 {
   margin-bottom: 8px !important;
 }
 
+.navbar-btn {
+  position: absolute !important;
+  padding: 3px 7px !important;
+  right: 20% !important;
+  top: 10px;
+  font-size: 1.15rem !important;
+}
+
 .urg-group {
   margin-left: 13px !important;
 }
@@ -213,7 +221,7 @@ hr {
 .urgency-low {
   background-color: green;
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .hidden-when-small {
     display:none !important;
   }
