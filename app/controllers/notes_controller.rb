@@ -14,7 +14,7 @@ class NotesController < ApplicationController
       render :select
     else
       @note = current_user.notes.get_most_urgent
-      @progress = 100 - (((session['count']-1)/10.0) * 100)
+      @progress = 100 - (((session['count']-2)/10.0) * 100)
     end
   end
 
