@@ -8,17 +8,19 @@ class NotesController < ApplicationController
 
   def index
     run_clean_up if clean_up_required?
-    @note = current_user.notes.get_most_urgent
-    if @urgencies[1] != 0
-      render :index
-    else
+    if session['count'] == 0 || session['count'] == nil
+      select
+    elsif session['count'] == 1
       render :select
+    else
+      @note = current_user.notes.get_most_urgent
+      @progress = 100 - (((session['count']-1)/10.0) * 100)
     end
   end
-  
+
   def view
-    @note = current_user.notes.get_most_urgent
-    render :index
+    session[:count] = 11
+    redirect_to notes_path
   end
 
   # GET /notes/1
@@ -32,14 +34,15 @@ class NotesController < ApplicationController
     @allseconds = Second.where(user_id: current_user.id).map{|n| n.name}.uniq
   end
 
-  # def select
-    # @session_count = session[:count]
-    # session[:count] = nil
-  # end
+  def select
+    session[:count] = 11
+    @note = current_user.notes.get_most_urgent
+    render :index
+  end
 
   # def selectvalue
-    # session[:count] = params['id'].to_i
-    # redirect_to notes_path
+  # session[:count] = params['id'].to_i
+  # redirect_to notes_path
   # end
 
   # GET /notes/1/edit
@@ -66,8 +69,8 @@ class NotesController < ApplicationController
 
   def seen
     @note.mark_as_seen(params['format'])
-    redirect_to notes_path if @urgencies[1] >= 1
-    redirect_to view_path if @urgencies[1] == 0
+    session['count'] = session['count'] - 1
+    redirect_to notes_path
   end
 
   def reset

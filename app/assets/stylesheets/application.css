@@ -29,6 +29,11 @@ h3 {
   border-radius: 0px !important;
 }
 
+.progress {
+  border-radius: 0px !important;
+  margin-bottom: 8px !important;
+}
+
 .urg-group {
   margin-left: 13px !important;
 }

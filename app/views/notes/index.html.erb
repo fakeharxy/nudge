@@ -7,6 +7,9 @@
 
 <div>
   <% if @note %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
     <div class="card" style="width: 100%;">
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted">#<%= @note.get_tag_name %></h6>
@@ -25,26 +28,18 @@
           </div>
         </div>
       </div>
-      <% if @note.urgency_level == "high" %>
-        <div title=<%=@note.urgency%> class="urgency urgency-high float-left"></span>
-      <% elsif @note.urgency_level == "medium" %>
-        <span title=<%=@note.urgency%> class="urgency urgency-medium float-left"></span>
-      <% else %>
-        <span title=<%=@note.urgency%> class="urgency urgency-low float-left"></span>
-      <% end %>
-      <div class="urgency float-left"> </div>
-        </div>
-        <br>
-
-        <p>  <%= link_to "Create a new note...", new_note_path %> </p>
-
-      <% else %>
-        <p>  <%= link_to "Create a new note...", new_note_path %> </p>
-        <p> You've seen all your notes today. </p>
-        <p> <img class='sun' src="images/sun.png" height='200'> </p>
-        <p> I'd recommend going outside or drawing a picture, but if you really want to see more, you can  <%= link_to 'Reset', reset_path() %> your note stack and see them all again! </p>
-      <% end %>
     </div>
     <br>
+
+    <p>  <%= link_to "Create a new note...", new_note_path %> </p>
+
+  <% else %>
+    <p>  <%= link_to "Create a new note...", new_note_path %> </p>
+    <p> You've seen all your notes today. </p>
+    <p> <img class='sun' src="images/sun.png" height='200'> </p>
+    <p> I'd recommend going outside or drawing a picture, but if you really want to see more, you can  <%= link_to 'Reset', reset_path() %> your note stack and see them all again! </p>
+  <% end %>
+</div>
+<br>
 
 </main>
