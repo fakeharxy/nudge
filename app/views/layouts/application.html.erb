@@ -18,7 +18,7 @@
       <nav  class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #146ba0;">
         <a class="navbar-brand" href="/">note|back
         </a>
-        <%= link_to "Write", new_note_path, :class => 'btn btn-sm float-right navbar-brand hidden-when-small btn-outline-dark navbar-btn' %> 
+        <%= link_to "Write", new_note_path, :class => 'btn btn-sm float-right navbar-brand hidden-when-small btn-outline-dark navbar-btn' %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,6 +34,9 @@
             <li class="nav-item hidden-when-small">
               <a class="nav-link" href="/tags">tags</a>
             </li>
+            <li class="nav-item">
+              <%= link_to 'archive', completes_path, :class => 'nav-link' %>
+            </li>
           </ul>
           <ul class="navbar-nav float-right">
             <li class="nav-item">
@@ -45,24 +48,26 @@
       <div class="container">
         <div class="col-md-3 d-none d-lg-block sidebar">
           <div class="sidebar-sticky">
-            <ul class="list-group list-group-flush">
-              <% @tags.each_with_index do |t,i| %>
-                <% if (i > 2 && i%4 == 0) && !@secondslevel %>
-                  <hr>
-                <% end %>
-                <li class="nav-item">
-                  <% if @secondslevel %>
-                    <%= link_to t.name, second_path(t), :class => 'tag-item nav-link' %>
-                  <% else %>
-                    <%= link_to t.name, tag_path(t), :class => 'tag-item tag-link nav-link' %>
+            <% if !@completes %>
+              <ul class="list-group list-group-flush">
+                <% @tags.each_with_index do |t,i| %>
+                  <% if (i > 2 && i%4 == 0) && !@secondslevel %>
+                    <hr>
                   <% end %>
-                </li>
-              <% end %>
-              <% if @secondslevel %>
-                <hr>
-                <%= link_to "back", :back, :class => "red-text tag-item nav-item nav-link" %>
-              <% end %>
-            </ul>
+                  <li class="nav-item">
+                    <% if @secondslevel %>
+                      <%= link_to t.name, second_path(t), :class => 'tag-item nav-link' %>
+                    <% else %>
+                      <%= link_to t.name, tag_path(t), :class => 'tag-item tag-link nav-link' %>
+                    <% end %>
+                  </li>
+                <% end %>
+                <% if @secondslevel %>
+                  <hr>
+                  <%= link_to "back", :back, :class => "red-text tag-item nav-item nav-link" %>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
         </div>
       <% else %>

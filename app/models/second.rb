@@ -1,5 +1,6 @@
 class Second < ApplicationRecord
   has_many :notes
+  has_many :complete
   belongs_to :tag
   belongs_to :user
 

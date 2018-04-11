@@ -19,6 +19,11 @@ class Note < ApplicationRecord
     Second.find_by(id: oldsecond_id).destroy if Second.find_by(id: oldsecond_id).notes == []
   end
 
+  def transfer_to_complete
+    Complete.create!(id: self.id, body: self.body, user_id: self.user_id, tag_id: self.tag_id, second_id: self.second_id)
+    self.destroy_with_tags
+  end
+
   def add_tag(tag, user_id)
     if Tag.exists?(name: tag, user_id: user_id)
       self.update(tag_id: Tag.find_by(name: tag, user_id: user_id).id)

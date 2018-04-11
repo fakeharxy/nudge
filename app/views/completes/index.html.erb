@@ -17,8 +17,7 @@
           </button>
           <div class="dropdown">
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%= link_to "delete note", note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'dropdown-item' %>
-              <%= link_to "edit note", edit_note_path(note), :class => 'dropdown-item' %>
+              <%= link_to "delete forever", note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'dropdown-item' %>
             </div>
           </div>
         </div>
@@ -26,5 +25,5 @@
     </div>
     <br>
   <% end %>
-  <%= link_to "back", tags_path(), :class => "red-text tag-item nav-item nav-link" %>
+  <%= link_to "back", notes_path(), :class => "red-text tag-item nav-item nav-link" %>
 </main>

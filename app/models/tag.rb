@@ -1,5 +1,6 @@
 class Tag < ApplicationRecord
   has_many :notes
+  has_many :completes
   has_many :seconds
   belongs_to :user, optional: true
 
