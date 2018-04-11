@@ -8,9 +8,9 @@
   <% @notes.each do |note| %>
     <div class="card" style="width: 100%;">
       <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted">#<%= note.get_tag_name %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">#<%= note.tag %></h6>
         <%= simple_format(note.body, class: "card-text") %>
-        <a href="../seconds/<%= note.second.id %>" class="card-link">#<%= note.second.name %></a>
+        <a href="../seconds/<%= note.second %>" class="card-link">#<%= note.second %></a>
         <div class="btn-group dropleft next-selector-show float-right" role="group">
           <button class="btn btn-sm btn-next-show btn-light active dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= octicon "kebab-vertical" %>

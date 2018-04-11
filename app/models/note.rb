@@ -20,7 +20,7 @@ class Note < ApplicationRecord
   end
 
   def transfer_to_complete
-    Complete.create!(id: self.id, body: self.body, user_id: self.user_id, tag_id: self.tag_id, second_id: self.second_id)
+    Complete.create!(id: self.id, body: self.body, user_id: self.user_id, tag: Tag.find_by(id: self.tag_id).name, second: Second.find_by(id: self.second_id).name)
     self.destroy_with_tags
   end
 
