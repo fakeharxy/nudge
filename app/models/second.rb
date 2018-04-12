@@ -12,6 +12,10 @@ class Second < ApplicationRecord
     destroy if note_count == 0
   end
 
+  def self.in_order_of_most_used(user_id)
+    Second.where(user_id: user_id).sort_by{|i| - i.note_count}
+  end
+
   def note_count
     self.notes.uniq.count
   end

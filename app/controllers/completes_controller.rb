@@ -7,6 +7,7 @@ class CompletesController < ApplicationController
   def send_to_archive
     @note = Note.find(params[:id])
     @note.transfer_to_complete
+    session['count'] = session['count'] - 1 if session['count']
     redirect_to notes_url
   end
 

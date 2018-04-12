@@ -34,8 +34,8 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
-    @alltags = Tag.where(user_id: current_user.id).sort{|n| - n.note_count }.map{|n| n.name}
-    @allseconds = Second.where(user_id: current_user.id).sort{|n| - n.note_count }.map{|n| n.name}.uniq
+    @alltags = Tag.in_order_of_most_used(current_user.id).map{|n| n.name}
+    @allseconds = Second.in_order_of_most_used(current_user.id).map{|n| n.name}.uniq
   end
 
   def select
