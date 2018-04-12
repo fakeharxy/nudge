@@ -15,7 +15,7 @@ class NotesController < ApplicationController
     elsif session['count'] == 1
       session['count'] = nil
       @hide_write = true
-      flash.now[:notice] = "You refreshed on 5 of your notes. Well done!"
+      flash.now[:notice] = "Well done on revisiting your notes!"
       render :select
     else
       @note = current_user.notes.get_most_urgent
