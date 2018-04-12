@@ -1,6 +1,5 @@
 class Tag < ApplicationRecord
   has_many :notes
-  has_many :completes
   has_many :seconds
   belongs_to :user, optional: true
 
@@ -13,7 +12,7 @@ class Tag < ApplicationRecord
   end
 
   def note_count
-    self.notes.uniq.count
+    self.notes.where(user_id: user).uniq.count
   end
 
   def self.in_order_of_most_used(user_id)
@@ -24,11 +23,11 @@ class Tag < ApplicationRecord
     Tag.where(user_id: user_id).where.not('importance' => nil)
   end
 
-  def get_all_seconds
-    self.seconds
+  def get_all_seconds(user)
+    self.seconds.where(user_id: user)
   end
 
-  def get_all_notes
-    self.notes.uniq
+  def get_all_notes(user)
+    self.notes.where(user_id: user).uniq
   end
 end
