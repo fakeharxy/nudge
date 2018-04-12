@@ -5,12 +5,12 @@
   </button></p>
 <% end %>
 
-<p> You've seen a good number of notes for now... why not take a break?</p>
+<p> What would you like to do? </p>
 
-<p> Of course, you can see more if you want. Just click the button below: </p>
-
-<%= link_to "Write", new_note_path, :class => "btn btn-outline-dark" %>
-<a role="button" href="/view" class="btn btn-outline-dark">Let's go again!</a>
+<div class="btn-group-lg btn-group" role="group">
+<a role="button" href="/view" class="btn btn-xl btn-outline-dark">Consume</a>
+<%= link_to "Create", new_note_path, :class => "btn btn-xl btn-outline-dark float-right" %>
+</div>
 
 
 </main>

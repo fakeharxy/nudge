@@ -10,18 +10,20 @@ class NotesController < ApplicationController
     run_clean_up if clean_up_required?
     if session['count'] == 0 || session['count'] == nil
       select
-      render :index
+      @hide_write = true
+      render :select
     elsif session['count'] == 1
       session['count'] = nil
+      @hide_write = true
       render :select
     else
       @note = current_user.notes.get_most_urgent
-      @progress = 100 - (((session['count']-2)/10.0) * 100)
+      @progress = 100 - (((session['count']-2)/5.0) * 100)
     end
   end
 
   def view
-    session[:count] = 11
+    session[:count] = 6
     redirect_to notes_path
   end
 
@@ -32,14 +34,13 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
-    @alltags = Tag.where(user_id: current_user.id).map{|n| n.name}
-    @allseconds = Second.where(user_id: current_user.id).map{|n| n.name}.uniq
+    @alltags = Tag.where(user_id: current_user.id).sort{|n| - n.note_count }.map{|n| n.name}
+    @allseconds = Second.where(user_id: current_user.id).sort{|n| - n.note_count }.map{|n| n.name}.uniq
   end
 
   def select
-    session[:count] = 11
     @note = current_user.notes.get_most_urgent
-    @progress = 10
+    @progress = 15
   end
 
   # def selectvalue
@@ -77,7 +78,10 @@ class NotesController < ApplicationController
 
   def reset
     Note.reset_seen_status(current_user.id)
-    redirect_to view_path
+    session['count'] = 1
+    respond_to do |format|
+      format.html { redirect_to notes_path, notice: 'All notes reset.' }
+    end
   end
 
   # PATCH/PUT /notes/1
