@@ -33,6 +33,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
+    session['count'] = nil
     @note = Note.new
     @alltags = Tag.in_order_of_most_used(current_user.id).map{|n| n.name}
     @allseconds = Second.in_order_of_most_used(current_user.id).map{|n| n.name}.uniq
@@ -78,7 +79,7 @@ class NotesController < ApplicationController
 
   def reset
     Note.reset_seen_status(current_user.id)
-    session['count'] = 1
+    session['count'] = nil
     respond_to do |format|
       format.html { redirect_to notes_path, notice: 'All notes reset.' }
     end

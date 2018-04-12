@@ -1,5 +1,6 @@
 class CompletesController < ApplicationController
   def index
+    session['count'] = nil
     @notes = Complete.in_order_of_completion(current_user.id)
     @completes = true
   end
