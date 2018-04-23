@@ -56,7 +56,7 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    importance = 13
+    importance = 11
     @note = Note.new(body: note_params['body'], last_seen: Date.today, user_id: current_user.id, importance: importance)
     @note.add_tag(note_params['tag'].chomp.downcase, current_user.id)
     @note.add_second(note_params['second'].chomp.downcase, @note.tag.id, current_user.id)
