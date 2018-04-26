@@ -39,20 +39,6 @@ RSpec.describe Note, type: :model do
     expect(@bob.urgency).to eq(15)
   end
 
-  it 'can return the urgency, amber' do
-    @bob.add_tag("mike", @user.id)
-    @bob.tag.importance = 4
-    @bob.set_last_seen = 8.days.ago
-    expect(@bob.urgency_level).to eq('medium')
-  end
-
-  it 'can return the urgency, green' do
-    @bob.add_tag("mike", @user.id)
-    @bob.tag.importance = 2
-    @bob.set_last_seen = 2.days.ago
-    expect(@bob.urgency_level).to eq('low')
-  end
-
   it "can mark a note as seen & update last_seen" do
     @bob.set_last_seen = 3.days.ago
     @bob.mark_as_seen

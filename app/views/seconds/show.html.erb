@@ -1,39 +1,31 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
 <% flash.each do %>
   <div id="notice" role="alert" class="alert alert-dismissible alert-success"><%= notice %><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button></div>
-<% end %>
+      <span aria-hidden="true">&times;</span>
+    </button></div>
+  <% end %>
 
-<% @notes.each do |note| %>
-  <div class="card" style="width: 100%;">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">#<%= note.get_tag_name %></h6>
-      <%= simple_format(note.body, class: "card-text") %>
-      <a href="../seconds/<%= note.second.id %>" class="card-link">#<%= note.second.name %></a>
-      <div class="btn-group dropleft next-selector-show float-right" role="group">
-        <button class="btn btn-sm btn-next-show btn-light active dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= octicon "kebab-vertical" %>
-        </button>
-        <div class="dropdown">
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= link_to "delete note", note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'dropdown-item' %>
-            <%= link_to "edit note", edit_note_path(note), :class => 'dropdown-item' %>
+  <% @notes.each do |note| %>
+    <div class="card" style="width: 100%;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">#<%= note.get_tag_name %></h6>
+        <%= simple_format(note.body, class: "card-text") %>
+        <a href="../seconds/<%= note.second.id %>" class="card-link">#<%= note.second.name %></a>
+        <div class="btn-group dropleft next-selector-show float-right" role="group">
+          <button class="btn btn-sm btn-next-show btn-light active dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= octicon "kebab-vertical" %>
+          </button>
+          <div class="dropdown">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to "delete note", note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'dropdown-item' %>
+              <%= link_to "edit note", edit_note_path(note), :class => 'dropdown-item' %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <% if note.urgency_level == "high" %>
-      <div title=<%=note.urgency%> class="urgency urgency-high float-left"></span>
-    <% elsif note.urgency_level == "medium" %>
-      <span title=<%=note.urgency%> class="urgency urgency-medium float-left"></span>
-    <% else %>
-      <span title=<%note.urgency%> class="urgency urgency-low float-left"></span>
-    <% end %>
-    <div class="urgency float-left"> </div>
-      </div>
-      <br>
-    <% end %>
+    <br>
+  <% end %>
 
-    <%= link_to "back", :back, :class => "red-text tag-item nav-item nav-link" %>
+  <%= link_to "back", :back, :class => "red-text tag-item nav-item nav-link" %>
 </main>
