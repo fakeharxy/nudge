@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get "sendtocomplete/:id", to: "completes#send_to_archive", as: "sendtocomplete"
   get "reset", to: "notes#reset", as: "reset"
   get "changeimportance", to: "tags#changeimportance", as: "changeimportance"
+  get "clear", to: "notes#clear"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

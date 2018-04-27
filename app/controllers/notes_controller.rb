@@ -40,6 +40,11 @@ class NotesController < ApplicationController
     @allseconds = Second.in_order_of_most_used(current_user.id).map{|n| n.name}.uniq
   end
 
+  def clear
+    session['count'] = nil
+    redirect_to notes_path
+  end
+
   def select
     @note = current_user.notes.get_most_urgent
     @progress = 15
