@@ -19,21 +19,21 @@
         <a class="navbar-brand" href="/clear">note|back
         </a>
         <% if !@hide_write%>
-        <%= link_to "create", new_note_path, :class => 'btn btn-sm float-right navbar-brand hidden-when-small btn-outline-dark navbar-btn' %>
-      <% end %>
+          <%= link_to "create", new_note_path, :class => 'btn btn-sm float-right navbar-brand hidden-when-small btn-outline-dark navbar-btn' %>
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item active">
               <%= link_to 'create', new_note_path, :class => 'nav-link' %>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/view">consume<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="/view">consume</span></a>
             </li>
-            <li class="nav-item hidden-when-small">
+            <li class="nav-item active hidden-when-small">
               <a class="nav-link" href="/tags">browse</a>
             </li>
             <li class="nav-item">
@@ -104,8 +104,14 @@
               placeholder: "Secondary Tag",
               selectOnClose: true
             });
+
             $(".select2-selection").on("focus", function () {
               $(this).parent().parent().prev().select2("open");
+            });
+
+            $(".nav .nav-link").on("click", function(){
+              $(".nav").find(".active").removeClass("active");
+              $(this).addClass("active");
             });
           })
         </script>
