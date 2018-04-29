@@ -10,28 +10,7 @@
     <div class="progress">
       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= @progress-10 %>%" aria-valuenow="<%= @progress-10 %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="card" style="width: 100%;">
-      <div class="card-body">
-        <h6 class="card-subtitle mb-2"><a href="tags/<%= @note.tag.id %>" class="card-link">#<%= @note.tag.name %></a> | <%= @note.second.name %>
-        
-        </h6>
-        <%= simple_format(Rinku.auto_link(@note.body, :all, 'target="_blank"'), {class: "card-text"}, :sanitize => false) %>
-        <div class="btn-group dropleft next-selector float-right" role="group">
-          <%= link_to (octicon 'eye', :height => 20), noteseen_path(@note, "minus"), :class => 'btn btn-sm btn-primary btn-next-selector' %>
-          <button class="btn btn-sm btn-next-selector btn-light active dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= octicon "kebab-vertical" %>
-          </button>
-          <div class="dropdown">
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%= link_to "delete", @note, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'dropdown-item' %>
-              <%= link_to "edit", edit_note_path(@note), :class => 'dropdown-item' %>
-              <%= link_to "archive/complete", sendtocomplete_path(@note), :class => 'dropdown-item' %>
-            </div>
-          </div>
-        </div>
-        <span class="small text-muted float-right"> note written: <%= @note.created_at.strftime("#{@note.created_at.strftime("%e").to_i.ordinalize} of %B") %> (<%= time_ago_in_words(@note.created_at) %> ago)</span>
-      </div>
-    </div>
+    <%= render partial: "shownote", locals: { note: @note } %>
     <br>
 
   <% else %>
@@ -44,8 +23,8 @@
 
 </main>
 
-        <script>
-          $(document).ready(function(){
-            $(".progress-bar").css('width', '<%= raw @progress %>%');
-          })
-        </script>
+<script>
+  $(document).ready(function(){
+    $(".progress-bar").css('width', '<%= raw @progress %>%');
+  })
+</script>

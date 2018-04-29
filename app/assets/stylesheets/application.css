@@ -26,6 +26,12 @@ h3 {
   display: inline !important;
 }
 
+.notedate {
+  position: absolute !important;
+  bottom: 4px !important;
+  padding-left: 25px;
+}
+
 .urg-note {
   margin: 4px 0px;
   width: auto;
@@ -266,7 +272,7 @@ hr {
 
   .next-selector {
     position: relative !important;
-    top: 90px !important;
+    top: 70px !important;
     left: 19px !important;
     margin-bottom: 10px;
   }
@@ -282,6 +288,7 @@ hr {
   }
 
   .card-text {
+    margin: 30px !important;
     margin-right: 0px !important;
   }
 

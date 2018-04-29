@@ -5,7 +5,6 @@
     </h6>
     <%= simple_format(Rinku.auto_link(note.body, :all, 'target="_blank"'), {class: "card-text"}, :sanitize => false) %>
     <div class="btn-group dropleft next-selector float-right" role="group">
-      <%= link_to (octicon 'eye', :height => 20), noteseen_path(note, "minus"), :class => 'btn btn-sm btn-primary btn-next-selector' %>
       <button class="btn btn-sm btn-next-selector btn-light active dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= octicon "kebab-vertical" %>
       </button>
