@@ -7,7 +7,6 @@ class NotesController < ApplicationController
   # GET /notes.json
 
   def index
-    run_sort_out
     run_clean_up if clean_up_required?
     if session['count'] == 0 || session['count'] == nil
       select
@@ -29,14 +28,6 @@ class NotesController < ApplicationController
     redirect_to notes_path
   end
   
-  def run_sort_out
-    Note.all.each do |note|
-      if note.importance < 0
-        note.update(importance: 5)
-      end
-    end
-  end
-
   # GET /notes/1
   # GET /notes/1.json
   def show; end
