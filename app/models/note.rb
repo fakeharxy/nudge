@@ -92,7 +92,7 @@ class Note < ApplicationRecord
   end
 
   def mark_as_seen(format = nil)
-    if self.importance < 2
+    if self.importance > 2
       self.update(importance: self.importance - (rand(2) + 1))
     end
     self.set_last_seen = Date.today
