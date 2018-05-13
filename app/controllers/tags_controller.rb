@@ -2,8 +2,7 @@ class TagsController < ApplicationController
   before_action :set_tag, only: :show
 
   def index
-    @tags = Tag.in_order_of_most_used(current_user.id)
-    @taglist = Tag.get_all_tags(current_user.id).sort_by{|t| - t.importance}
+    @taglist = Tag.in_order_of_most_used(current_user.id)
   end
 
   def show

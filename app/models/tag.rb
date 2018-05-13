@@ -24,7 +24,7 @@ class Tag < ApplicationRecord
   end
 
   def get_all_seconds(user)
-    self.seconds.where(user_id: user)
+    self.seconds.where(user_id: user).sort_by{|i| - i.note_count}
   end
 
   def get_all_notes(user)
