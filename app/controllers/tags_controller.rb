@@ -9,7 +9,7 @@ class TagsController < ApplicationController
   def show
     @secondslevel = true
     @notes = @tag.get_all_notes(current_user.id)
-    @tags = @tag.get_all_seconds(current_user.id)
+    @secondlist = @tag.get_all_seconds(current_user.id)
   end
 
   def changeimportance

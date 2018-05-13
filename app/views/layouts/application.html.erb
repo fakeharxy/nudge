@@ -33,7 +33,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/view">consume</span></a>
             </li>
-            <li class="nav-item active hidden-when-small">
+            <li class="nav-item">
               <a class="nav-link" href="/tags">browse</a>
             </li>
             <li class="nav-item">
@@ -47,74 +47,49 @@
           </ul>
         </div>
       </nav>
-      <div class="container">
-        <div class="col-md-3 d-none d-lg-block sidebar">
-          <div class="sidebar-sticky">
-            <% if !@completes %>
-              <ul class="list-group list-group-flush">
-                <% @tags.each_with_index do |t,i| %>
-                  <% if (i > 2 && i%4 == 0) && !@secondslevel %>
-                    <hr>
-                  <% end %>
-                  <li class="nav-item">
-                    <% if @secondslevel %>
-                      <%= link_to t.name, second_path(t), :class => 'tag-item nav-link' %>
-                    <% else %>
-                      <%= link_to t.name, tag_path(t), :class => 'tag-item tag-link nav-link' %>
-                    <% end %>
-                  </li>
-                <% end %>
-                <% if @secondslevel %>
-                  <hr>
-                  <%= link_to "back", :back, :class => "red-text tag-item nav-item nav-link" %>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
-        </div>
-      <% else %>
-        <div class="container">
-        <% end %>
-        <p></p>
-        <%= yield %>
-        </div>
-        <script
-             src="https://code.jquery.com/jquery-3.3.1.min.js"
-             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-             crossorigin="anonymous"></script>
+    <% end %>
+    <div class="container">
+      <main role="main" class="col-sm-10 col-md-10 mx-auto col-lg-10 pt-3 px-4">
+      <%= yield %>
+      </main>
+    </div>
+    <script
+                        src="https://code.jquery.com/jquery-3.3.1.min.js"
+                        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                        crossorigin="anonymous"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-        <script>
-          $(document).ready(function(){
-            $(".dropdown1").select2({
-              tags: true,
-              placeholder: "Primary Tag",
-              selectOnClose: true
-            });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $(".dropdown1").select2({
+    tags: true,
+    placeholder: "Primary Tag",
+    selectOnClose: true
+  });
 
-            $(".select2-selection").on("focus", function () {
-              $(this).parent().parent().prev().select2("open");
-            });
+  $(".select2-selection").on("focus", function () {
+    $(this).parent().parent().prev().select2("open");
+  });
 
-            $(".dropdown2").select2({
-              tags: true,
-              placeholder: "Secondary Tag",
-              selectOnClose: true
-            });
+  $(".dropdown2").select2({
+    tags: true,
+    placeholder: "Secondary Tag",
+    selectOnClose: true
+  });
 
-            $(".select2-selection").on("focus", function () {
-              $(this).parent().parent().prev().select2("open");
-            });
+  $(".select2-selection").on("focus", function () {
+    $(this).parent().parent().prev().select2("open");
+  });
 
-            $(".nav .nav-link").on("click", function(){
-              $(".nav").find(".active").removeClass("active");
-              $(this).addClass("active");
-            });
-          })
-        </script>
+  $(".nav .nav-link").on("click", function(){
+    $(".nav").find(".active").removeClass("active");
+    $(this).addClass("active");
+  });
+})
+    </script>
   </body>
 </html>
 

@@ -7,6 +7,9 @@
 .body-note {
   resize: none;
   height: 20em;
+  border: 2px dashed lightgrey !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .card-text {

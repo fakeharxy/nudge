@@ -18,7 +18,11 @@
   border-radius: 0 !important;
 }
 
-html, main, body, .sidebar, .sidebar-sticky  {
+html,
+main,
+body,
+.sidebar,
+.sidebar-sticky {
   background-color: #f2faff !important;
 }
 
@@ -30,6 +34,11 @@ h3 {
   position: absolute !important;
   bottom: 4px !important;
   padding-left: 25px;
+}
+
+.table-buttons {
+  display: table !important;
+  margin: 3% auto !important;
 }
 
 .urg-note {
@@ -57,7 +66,7 @@ h3 {
 }
 
 .sidebar {
-  right:40px;
+  right: 40px;
 }
 
 .navbar-brand {
@@ -140,21 +149,16 @@ h3 {
   padding: .5rem .7rem !important;
 }
 
-.btn:focus, .btn:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
 .mr-2 {
   border: 1px solid #d6d7e5;
 }
 
 hr {
   border: none;
-  clear:both;
-  display:block;
+  clear: both;
+  display: block;
   width: 25%;
-  background-color:#eeefff;
+  background-color: #eeefff;
   height: 1px;
   margin-right: 12px;
   margin-top: 2px !important;
@@ -203,14 +207,13 @@ hr {
 
 .tag-item {
   padding: 1px 1px !important;
-
 }
 
 .card-body {
   padding-left: 1.6rem !important;
 }
 
-.urgency{
+.urgency {
   height: calc(100% + 4px);
   height: -moz-calc(100% + 4px);
   height: -webkit-calc(100% + 4px);
@@ -231,12 +234,12 @@ hr {
 .urgency-low {
   background-color: green;
 }
+
 @media (min-width: 992px) {
   .hidden-when-small {
-    display:none !important;
+    display: none !important;
   }
 }
-
 
 @media (max-width: 992px) {
   .navbar-btn {
@@ -246,50 +249,50 @@ hr {
     top: 10px;
     font-size: 1.15rem !important;
   }
-
   .show-when-small {
-    display:none !important;
+    display: none !important;
   }
 }
 
 @media (max-width: 767px) {
-
   .navbar-btn {
     right: 20% !important;
   }
-
   .container {
     padding-bottom: 35px;
   }
-
   .dropleft .dropdown-menu {
     margin-right: 4rem !important;
   }
-
   .slider.slider-horizontal {
     right: 10px !important;
   }
-
   .next-selector {
     position: relative !important;
     top: 70px !important;
     left: 19px !important;
     margin-bottom: 10px;
   }
-
   .btn-next-selector {
     font-size: 0px !important;
     padding: .7rem 1rem !important;
   }
-
   .btn-minus {
     font-size: 0px !important;
     padding: .66rem .8rem .3rem .8rem !important;
   }
-
   .card-text {
     margin: 30px !important;
     margin-right: 0px !important;
   }
+}
 
+@media (max-width: 400px) {
+  .table-buttons {
+    display: grid !important;
+  }
+  .btn-group-lg>.btn,
+  .btn-lg {
+    margin: 2px !important;
+  }
 }
