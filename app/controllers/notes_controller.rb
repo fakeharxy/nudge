@@ -2,13 +2,11 @@ class NotesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
-  before_action :set_tags, only: [:view, :select, :new, :index, :show, :edit, :update]
   before_action :run_clean_up, if: :clean_up_required?, only: [:index]
   # GET /notes
   # GET /notes.json
 
   def index
-    run_clean_up if clean_up_required?
     if session['count'] == 0 || session['count'] == nil
       select
       @hide_write = true
@@ -127,10 +125,6 @@ class NotesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_note
     @note = Note.find(params[:id])
-  end
-
-  def set_tags
-    @tags = current_user.tags_in_order_of_most_used
   end
 
   def clean_up_required?
