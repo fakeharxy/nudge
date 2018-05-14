@@ -3,6 +3,7 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_note, only: [:seen, :show, :edit, :update, :destroy]
   before_action :set_tags, only: [:view, :select, :new, :index, :show, :edit, :update]
+  before_action :run_clean_up, if: :clean_up_required?, only: [:index]
   # GET /notes
   # GET /notes.json
 
